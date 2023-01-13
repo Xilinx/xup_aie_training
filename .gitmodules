@@ -1,0 +1,4 @@
+[submodule "sources/Vitis_Libraries"]
+	path = sources/Vitis_Libraries
+	url = https://github.com/Xilinx/Vitis_Libraries.git
+	shallow = true

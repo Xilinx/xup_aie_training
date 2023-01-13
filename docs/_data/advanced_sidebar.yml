@@ -1,0 +1,5 @@
+docs_list_title: advanced_sidebar
+
+docs:
+  - title: N-Body Sim lab
+    url: nbody_lab.html

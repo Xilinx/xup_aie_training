@@ -1,0 +1,8 @@
+_site
+.sass-cache
+Gemfile.lock
+*.gem
+.vscode/
+*.db
+.run/
+*.run_summary

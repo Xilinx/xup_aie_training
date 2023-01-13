@@ -1,0 +1,11 @@
+docs_list_title: setup_sidebar
+docs:
+
+  - title: Live Workshop
+    url: setup_workshop.html
+
+  - title: Local Computer
+    url: setup_local_computer.html
+
+  - title: Tools & Code
+    url: setup_tools.html

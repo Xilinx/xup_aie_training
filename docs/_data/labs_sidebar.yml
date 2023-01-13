@@ -1,0 +1,13 @@
+docs_list_title: labs_sidebar
+docs:
+  - title: Vector Add 1
+    url: vadd_lab.html
+
+  - title: Vector Add 2
+    url: vadd_lab_2.html
+
+  - title: Matrix Mult lab
+    url: matmult_lab.html
+
+  - title: DSPLib Lab
+    url: dsplib_lab.html
