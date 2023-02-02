@@ -4,14 +4,14 @@
 
 #include "graph.h"
 
-TopGraph G;
+TopGraph mult_graph;
 
 #if defined(__AIESIM__) || defined(__X86SIM__)
    int main(int argc, char ** argv)
    {
-      G.init();
-      G.run(NITERATIONS);
-      G.end();
+      mult_graph.init();
+      mult_graph.run(1);
+      mult_graph.end();
 
       return 0;
    }

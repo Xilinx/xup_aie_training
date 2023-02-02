@@ -6,3 +6,4 @@ Gemfile.lock
 *.db
 .run/
 *.run_summary
+__pycache__/

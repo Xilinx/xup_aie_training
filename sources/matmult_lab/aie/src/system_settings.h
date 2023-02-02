@@ -46,5 +46,3 @@ Dimensions
 #define NBYTES_INT32 4
 #define NBYTES_INT16 2
 #define NBYTES_INT8 1
-
-#define NITERATIONS 1
