@@ -6,7 +6,7 @@
 #define __GRAPH_H__
 
 #include <adf.h>
-#include "aie_kernel.hpp"
+#include "kernels.hpp"
 
 using namespace adf;
 
