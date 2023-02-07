@@ -36,7 +36,7 @@ class simpleGraph : public graph {
             connect<stream>(p_s1.out[0], vadd.in[1]);
             connect<stream>(vadd.out[0], p_s2.in[0]);
             // Define kernel source code
-            source(vadd) = "aie_kernel.cpp";
+            source(vadd) = "vadd_stream.cc";
 #else
             //connect ports and kernel
             connect<window<2048 * sizeof(int)>>(p_s0.out[0], vadd.in[0]);
@@ -44,7 +44,7 @@ class simpleGraph : public graph {
             connect<window<2048 * sizeof(int)>>(vadd.out[0], p_s2.in[0]);
 
             // Define kernel source code
-            source(vadd) = "aie_vadd_window.cpp";
+            source(vadd) = "vadd_window.cc";
 #endif
             // Define kernel runtime ratio
             runtime<ratio>(vadd) = 1;

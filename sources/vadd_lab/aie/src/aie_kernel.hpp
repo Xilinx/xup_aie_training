@@ -7,7 +7,7 @@
 
 #include <adf/stream/types.h>
 
-//#define STREAM
+#define STREAM
 
 void aie_vadd_stream(input_stream_int32 *in0, input_stream_int32 *in1, output_stream_int32 *out);
 
