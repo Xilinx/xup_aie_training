@@ -11,7 +11,11 @@ simpleGraph vadd_graph;
 #if defined(__AIESIM__) || defined(__X86SIM__)
 int main(int argc, char** argv) {
     vadd_graph.init();
+#if defined(STREAM)
     vadd_graph.run(512);
+#else
+    vadd_graph.run(1);
+#endif
     vadd_graph.end();
     std::ifstream file1, file2;
     file1.open("../data/golden.txt");
