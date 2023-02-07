@@ -8,6 +8,8 @@
 #include <adf.h>
 #include "kernels.hpp"
 
+#define STREAM
+
 using namespace adf;
 
 class simpleGraph : public graph {
