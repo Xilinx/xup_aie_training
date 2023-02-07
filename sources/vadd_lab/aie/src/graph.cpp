@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "aie_graph.hpp"
+#include "graph.hpp"
 
 simpleGraph vadd_graph;
 
