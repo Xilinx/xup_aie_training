@@ -6,8 +6,8 @@
 #include "aie_api/aie.hpp"
 
 void aie_vadd_stream(input_stream_int32 *in0, input_stream_int32 *in1, output_stream_int32 *out){
-    auto a = readincr_v4(in0);
-    auto b = readincr_v4(in1);
-    auto res = aie::add(a, b);
+    aie::vector<int32, 4> a = readincr_v4(in0);
+    aie::vector<int32, 4> b = readincr_v4(in1);
+    aie::vector<int32, 4> res = aie::add(a, b);
     writeincr_v4(out, res);
 }
