@@ -12,7 +12,7 @@ When reporting an issue provide the following information.
 
 - Section in lab or page you found the issue
 
-- How you are running the tutorial? Cloud or on-premises
+- How are you running the tutorial? Cloud or on-premises
 
 - Screenshots or code snippets if appropriate
   - Check how to [create and highlight code](https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks)
@@ -24,8 +24,10 @@ When reporting an issue provide the following information.
   - `lsb_release -a`
   - VCK5000 platform information
 
-Report the issue to your instructor or open a [new issue](https://github.com/Xilinx/xup_aie_training/issues).
+Report the issue to your instructor or open a [new issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose).
 It is always a good idea to check previous issues in case that the issue has already been resolved.
+
+Please use the templates to provide enough information so the likelihood of getting a useful answer is higher.
 
 ---------------------------------------
 <p align="center">Copyright&copy; 2023 Advanced Micro Devices</p>

@@ -228,7 +228,7 @@ The following assignments are optional, however they will help deepen your knowl
 
    Note that the text files used as stimuli need to be regenerated to match the plio bitwidth, the `write_file` function on the Python file supports this
 
-If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues)
+If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose)
 
 ## Conclusion
 
