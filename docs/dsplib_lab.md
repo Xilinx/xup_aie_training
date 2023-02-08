@@ -185,6 +185,28 @@ In an AMD preconfigured instance you can run `code $HOME/xup_aie_training/source
 
    - Q13: How many cycle does one instance of the FTT takes to complete?
 
+## Assignments for the Reader
+
+The following assignments are optional, however they will help deepen your knowledge about the DSP Libraries. No solution is provided for these assignments.
+
+1. Use the Matrix Multiply from the DSPLib, add to the graph an instance of `xf::dsp::aie::blas::matrix_mult::matrix_mult_graph` using one of the real datatypes
+
+   Review the documentation of this library [here](https://docs.xilinx.com/r/en-US/Vitis_Libraries/dsp/user_guide/L2/func-matmul.html)
+
+1. Implement a decimation symmetric FIR filter, add to the graph an instance of `dsplib::fir::decimate_sym::fir_decimate_sym_graph` using one of the real datatypes
+
+   Review the documentation of this library [here](https://docs.xilinx.com/r/en-US/Vitis_Libraries/dsp/user_guide/L2/func-fir-filters.html)
+
+1. For the existing FIR filters use streaming interface instead of window interface
+
+   Review the documentation of this library [here](https://docs.xilinx.com/r/en-US/Vitis_Libraries/dsp/user_guide/L2/func-fir-filters.html_5_2)
+
+1. Design your own single rate, asymmetrical filter.
+
+   For this, you will have to compute the coefficients and call the appropriate function
+
+If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose)
+
 <!-- TODO
 ### Location Constraints
 
