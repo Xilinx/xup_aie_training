@@ -4,51 +4,55 @@
 
 #include <iostream>
 #include <fstream>
-#include "aie_graph.hpp"
+#include "graph.hpp"
 
 simpleGraph vadd_graph;
 
 #if defined(__AIESIM__) || defined(__X86SIM__)
 int main(int argc, char** argv) {
     vadd_graph.init();
+#ifdef STREAM
     vadd_graph.run(512);
+#else
+    vadd_graph.run(1);
+#endif
     vadd_graph.end();
-    std::ifstream file1, file2;
-    file1.open("../data/golden.txt");
-    if(file1.fail()){
+    std::ifstream golden_file, aie_file;
+    golden_file.open("../data/golden.txt");
+    if(golden_file.fail()){
       std::cerr << "Error opening golden file." << endl;
-      file1.close();
+      golden_file.close();
       return -1;
     }
 
 #if defined(__X86SIM__)
-    file2.open("x86simulator_output/output.txt");
+    aie_file.open("x86simulator_output/output.txt");
 #else
-    file2.open("aiesimulator_output//output.txt");
+    aie_file.open("aiesimulator_output/output.txt");
 #endif
-    if(file2.fail()){
+    if(aie_file.fail()){
       std::cerr<<"Error opening produced file."<<endl;
       return -1;
     }
 
-    std::string line1, line2;
+    std::string line_golden, line_aie;
     bool match = true;
-    while (getline(file1, line1)){
-        getline(file2, line2);
-        if (file2.eof()){
+    while (getline(golden_file, line_golden)){
+        getline(aie_file, line_aie);
+        if (aie_file.eof()){
             std::cerr << "AI Engine results are too short to match golden result" << std::endl;
             break;
         }
-        if (line2[0]=='T')
-            getline(file2, line2);
-        if (std::stoi(line1) != std::stoi(line2)){
+        while (line_aie[0]=='T')
+            getline(aie_file, line_aie);
+        if (std::stoi(line_golden) != std::stoi(line_aie)){
             match = false;
             break;
         }
     }
-    if (!file2.eof()){
-        getline(file2, line2);
-        if (!file2.eof())
+    if (!aie_file.eof()){
+        getline(aie_file, line_aie);
+        if (!aie_file.eof())
             std::cerr << "AI Engine results are too long to match golden result" << std::endl;
     }
     if (match)
@@ -56,8 +60,8 @@ int main(int argc, char** argv) {
     else
         std::cout << "AI Engine results DO NOT match golden result" << std::endl;
 
-    file1.close();
-    file2.close();
+    golden_file.close();
+    aie_file.close();
     return 0;
 }
 #endif

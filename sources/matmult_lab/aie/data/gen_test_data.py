@@ -90,7 +90,6 @@ def main():
     mat2fileint(a, "inputa_int_8_16.txt")
     mat2fileint(b, "inputb_int_8_16.txt")
     mat2fileint(c, "ref_outputc_int_8_16.txt")
-    import pdb; pdb.set_trace()
     """
 
 

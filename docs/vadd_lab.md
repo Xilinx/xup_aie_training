@@ -112,7 +112,7 @@ Follow these steps to get the source code for this tutorial, [Get Source Code](s
 
 1. In the Explore pane, expand `aie_vadd [ aie_domain ] > data` and `aie_vadd [ aie_domain ] > src`
 
-   Review the source files, you can find a detailed description of the source code [here](vadd_source_code_description.md)
+   Review the source files, you can find a detailed description of the source code [here](vadd_explained.md)
 
    ![](images/vadd_lab/aie_domain_source_code.png)
 
@@ -126,7 +126,7 @@ Follow these steps to get the source code for this tutorial, [Get Source Code](s
 
    ![](images/vadd_lab/aie_domain_select_top_level_file.png)
 
-1. In the File selection window, expand `aie_vadd > src` and select **aie_graph.cpp**, then click *OK*
+1. In the File selection window, expand `aie_vadd [ aie_domain ] > src` and select **graph.cpp**, then click *OK*
 
    ![](images/vadd_lab/aie_domain_select_top_level_file_graph.png)
 
@@ -212,6 +212,23 @@ This is still a software emulation (AIE Simulation), however the simulation take
 1. A window reporting no differences pops up, click *OK* to finish
 
    ![](images/vadd_lab/compare_no_difference.png)
+
+
+## Assignments for the Reader
+
+The following assignments are optional, however they will help deepen your knowledge about the AIE programming model.
+
+1. By default the graph instantiates the `vadd_stream` kernel. However, you can also instantiate the `vadd_window` kernel by commenting line 11. Comment line 11, recompile the graph and rerun the AIE. What differences do you notice in the graph?
+
+1. Make the necessary changes to include both `vadd_stream` and `vadd_window` kernels in the `simpleGraph`
+
+   Note that the text files used as stimuli cannot be reused
+
+1. Change the plio bitwidth in the `input_plio::create()` to either `plio_64_bits` or `plio_128_bits`. What changes do you notice? Is it necessary to make any other changes?
+
+   Note that the text files used as stimuli need to be regenerated to match the plio bitwidth, the `write_file` function on the Python file supports this
+
+If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues)
 
 ## Conclusion
 
