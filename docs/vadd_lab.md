@@ -112,7 +112,7 @@ Follow these steps to get the source code for this tutorial, [Get Source Code](s
 
 1. In the Explore pane, expand `aie_vadd [ aie_domain ] > data` and `aie_vadd [ aie_domain ] > src`
 
-   Review the source files, you can find a detailed description of the source code [here](vadd_source_code_description.md)
+   Review the source files, you can find a detailed description of the source code [here](vadd_explained.md)
 
    ![](images/vadd_lab/aie_domain_source_code.png)
 
