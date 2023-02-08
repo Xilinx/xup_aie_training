@@ -44,7 +44,7 @@ In this lab, you will add four different AIE kernels, each of them supporting a 
 
 1. In the Explore pane, expand `matmult [ aie_domain ] > data` and `matmult [ aie_domain ] > src`
 
-   Review the source files. A detailed description of the files can be found [here](matmult_source_code_description.md)
+   Review the source files. A detailed description of the files can be found [here](matmult_explained.md)
 
 1. In the Explore pane, double-click `matmult [ aie_domain ] > matmult.prj`
 
