@@ -1,7 +1,7 @@
 name: Assignment Support Request
 description: File a assignment support request
 title: "[Assignment]: "
-labels: ["assignment", "support"]
+labels: ["Assignment"]
 body:
   - type: markdown
     attributes:
