@@ -1,0 +1,7 @@
+docs_list_title: labs_sidebar
+docs:
+  - title: Vector Add
+    url: vadd_explained.html
+
+  - title: Matrix Mult
+    url: matmult_explained.html

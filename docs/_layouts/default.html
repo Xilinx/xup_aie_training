@@ -43,6 +43,11 @@
             <li class="listedpages "><a style="color:white; " href="{{ item.url }} ">{{ item.title }}</a></li>
             {% endfor %}
 
+            <li><label for="btn-1 " class="show ">Code Explained </label></li>
+            {% for item in site.data.code_sidebar.docs %}
+            <li class="listedpages "><a style="color:white; " href="{{ item.url }} ">{{ item.title }}</a></li>
+            {% endfor %}
+
             <!--
             <li><label for="btn-1 " class="show ">Advanced </label></li>
             {% for item in site.data.advanced_sidebar.docs %}
