@@ -37,7 +37,6 @@ int main(int argc, char** argv) {
 
     std::string line_golden, line_aie;
     bool match = true;
-    int count = 0;
     while (getline(golden_file, line_golden)){
         getline(aie_file, line_aie);
         if (aie_file.eof()){
@@ -50,10 +49,7 @@ int main(int argc, char** argv) {
             match = false;
             break;
         }
-        else
-            count++;
     }
-    std::cout << "Count reached: " << count << std::endl;
     if (!aie_file.eof()){
         getline(aie_file, line_aie);
         if (!aie_file.eof())
