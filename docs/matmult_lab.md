@@ -192,6 +192,21 @@ The Profile and Trace will help you analyze the activity on your AIE kernel code
    How many Tiles are used for the Kernels?
    How many Tiles are used for buffers?
 
+
+## Assignments for the Reader
+
+The following assignments are optional, however they will help deepen your knowledge about the AIE programming model. No solution is provided for these assignments.
+
+1. Implement a matrix multiplication kernel with mixed precision for mat A and mat B.
+
+   For instance, mat A is `int16` and matB `int8` or vice versa. You can also consider `int32` and `int16`. To help selecting the intrinsic parameter you can use these Python helpers for [lane addressing scheme](https://github.com/Xilinx/xup_aie_training/tree/main/sources/lane_addressing_scheme)
+
+1. Using the existing kernels compute the result of a bigger matrix multiplication
+
+   You can tile the matrix multiplication using the existing kernels, or go one step further and use the cascade interface to realize this
+
+If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose)
+
 ## Build Hardware
 
 Coming soon

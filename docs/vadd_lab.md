@@ -216,7 +216,7 @@ This is still a software emulation (AIE Simulation), however the simulation take
 
 ## Assignments for the Reader
 
-The following assignments are optional, however they will help deepen your knowledge about the AIE programming model.
+The following assignments are optional, however they will help deepen your knowledge about the AIE programming model. No solution is provided for these assignments.
 
 1. By default the graph instantiates the `vadd_stream` kernel. However, you can also instantiate the `vadd_window` kernel by commenting line 11. Comment line 11, recompile the graph and rerun the AIE. What differences do you notice in the graph?
 
