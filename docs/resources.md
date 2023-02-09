@@ -4,6 +4,48 @@ layout: default
 
 # Additional Material
 
+## Learning Path
+
+1. [Versal ACAP Design Process Documentation](https://www.xilinx.com/support/documentation-navigation/design-process/ai-engine-development.html)
+   - Using this interactive page, you can select the area you are interested in, then using the flow chart you can find related documentation
+
+1. AIE and AIE-ML Architecture, [AM009](https://docs.xilinx.com/r/en-US/am009-versal-ai-engine) and [AM020](https://docs.xilinx.com/r/en-US/am020-versal-aie-ml)
+   - AIE Tile, interfaces
+   - Data Movement
+   - Scalar and Vector processors
+   - Vector and Accumulator registers
+
+1. AIE Tool Flow [UG1076](https://docs.xilinx.com/r/en-US/ug1076-ai-engine-environment)
+   - Compile and simulation of an AIE Graph
+   - Performance Analysis
+   - Program PS/Host Application
+   - Integrate Application using Vitis Tool flow
+   - Debugging the AIE application
+
+
+1. AIE Kernel and Graph Programming [UG1079](https://docs.xilinx.com/r/en-US/ug1079-ai-engine-kernel-coding)
+   - Programming
+     - Scalar and Vector
+     - Single Kernel
+     - Graph
+   - AIE API / intrinsics
+   - Window and Stream Data API
+
+1. ACAP System and Solution Planning [UG1504](https://docs.xilinx.com/r/en-US/ug1504-acap-system-solution-planning-methodology)
+   - Application Partition
+   - Memory and Data movement
+   - Custom Data flow /Precisions
+   - Compute intensive Tasks
+
+1. Hardware, IP, and Platform Development Methodology [UG1387](https://docs.xilinx.com/r/en-US/ug1387-acap-hardware-ip-platform-dev-methodology)
+   - Key IP: the Control, Interface, and Processing System (CIPS) IP
+   - Planning Considerations
+     - Traditional Design Flow
+     - Platform-Based Design Flow
+     - Dynamic Function eXchange
+
+## General Documentation
+
 1. [Download Vitis Unified Software](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html)
 
 1. [Vitis Unified Software Documentation](https://docs.xilinx.com/v/u/en-US/ug1416-vitis-documentation)
@@ -29,6 +71,8 @@ layout: default
 1. [AI Engine Intrinsics](https://www.xilinx.com/htmldocs/xilinx2022_2/aiengine_intrinsics/intrinsics/index.html)
 
 1. [Versal ACAP Design Process Documentation](https://www.xilinx.com/support/documentation-navigation/design-process/ai-engine-development.html)
+
+1. [Versal ACAP Design Flow Assistant](https://www.xilinx.com/support/documentation-navigation/design-process/versal-decision-tree-welcome.html)
 
 1. [System-Level Benefits of the Versal Platform](https://www.xilinx.com/content/dam/xilinx/support/documents/white_papers/wp539-versal-system-level-benefits.pdf)
 
