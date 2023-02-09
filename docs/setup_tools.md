@@ -7,6 +7,7 @@ layout: default
 
 ## Get Source Code
 
+{% include codeHeader.html %}
 ```sh
 cd $HOME
 git clone --recursive https://github.com/Xilinx/xup_aie_training.git
@@ -16,6 +17,7 @@ git clone --recursive https://github.com/Xilinx/xup_aie_training.git
 
 Once the VCK5000 platform is installed, make it available by running:
 
+{% include codeHeader.html %}
 ```sh
 echo "export PLATFORM_REPO_PATHS=/opt/xilinx/platforms/" >> $HOME/.bashrc
 source $HOME/.bashrc
@@ -29,12 +31,14 @@ If you are in a live instructor-led XUP tutorial, the tools have been already se
 
 Verify Vitis by running the code below, this should return the Vitis version
 
+{% include codeHeader.html %}
 ```sh
 vitis -version
 ```
 
 Verify the AIE compiler by running the code below, this should return the aiecompiler version
 
+{% include codeHeader.html %}
 ```sh
 aiecompiler --version
 ```
@@ -43,6 +47,7 @@ aiecompiler --version
 
 Verify XRT by running the code below, this should return the XRT version
 
+{% include codeHeader.html %}
 ```sh
 xbutil --version
 ```
@@ -51,6 +56,7 @@ xbutil --version
 
 Verify that the VCK5000 is available for use by running the following code, this should return a list of files and one of them should have the `xpfm` extension
 
+{% include codeHeader.html %}
 ```sh
 ls $PLATFORM_REPO_PATHS
 ```
