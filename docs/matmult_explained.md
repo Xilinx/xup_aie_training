@@ -33,8 +33,8 @@ In the remainder of this document, we cover how the matrix multiplication is per
 
 For simplicity, we consider the following operation A x B = C, where the size of matrix A and B (for the purpose of this description) are described below:
 
-- A is either 8x8 or 4x8. The described algorithm for AIE can be extrapolated for A = Nx8, where N must be a multiple of 4
-- B is 8x8. The described algorithm for AIE can be extrapolated for B = 8xN
+* A is either 8x8 or 4x8. The described algorithm for AIE can be extrapolated for A = Nx8, where N must be a multiple of 4
+* B is 8x8. The described algorithm for AIE can be extrapolated for B = 8xN
 
 Please note that for a given data type, there may be other ways of breaking down the computation on the AI Engine tile. We only describe one of them.
 
@@ -52,11 +52,9 @@ For `int32` and `float` data types the computation is done in the same way. Howe
 
 Based on the [documentation](https://docs.xilinx.com/r/en-US/am009-versal-ai-engine/Functional-Overview?section=gjd1525480035443__table_vfm_pr5_w2b), we know that for `int32` and float (real data types only) the maximum number of MACs is 8. So, we need to find out a way of parallelizing the computation doing 8 multiply accumulate operations per cycle.
 
-
 | MACs/cycles | lanes | columns | MatA maps to | MatB maps to | Elements on X buffer | Elements on Z buffer | Accumulator | MAC intrinsic |
 |-------------|-------|---------|--------------|--------------|----------------------|----------------------|-------------|---------------|
 |     8       |  8    |   1     | X buffer     | Z buffer     |         16           |          8           |     acc80   |  [Link](https://www.xilinx.com/htmldocs/xilinx2022_2/aiengine_intrinsics/intrinsics/group__vect__mult__32x32.html#ga63b63eacca61ba92cd8b314bc6a27c41) |
-
 
 What the table tells us is that at any given time we can only access to 16 elements of matrix A (2 rows) and 8 elements of matrix B (1 row). So, it is not possible to perform a complete inner product, hence, we can generate partial results and store such partial result on the accumulator registers or vector register (in the case of the floating-point vector processor).
 
@@ -78,7 +76,7 @@ Based on the [documentation](https://docs.xilinx.com/r/en-US/am009-versal-ai-eng
 
 | MACs/cycles | lanes | columns | MatA maps to | MatB maps to | Elements on X buffer | Elements on Z buffer | Accumulator | MUL intrinsic |
 |-------------|-------|---------|--------------|--------------|----------------------|----------------------|-------------|---------------|
-|     32      |  16   |   2     | Z buffer     | A buffer     |         32           |          16          |     acc48   |  [Link](https://www.xilinx.com/htmldocs/xilinx2022_2/aiengine_intrinsics/intrinsics/group__vect__mult__16x16.html#ga1e00ad6eedd92916e22e27f83abe5f01) |
+|     32      |  16   |   2     | Z buffer     | X buffer     |         32           |          16          |     acc48   |  [Link](https://www.xilinx.com/htmldocs/xilinx2022_2/aiengine_intrinsics/intrinsics/group__vect__mult__16x16.html#ga1e00ad6eedd92916e22e27f83abe5f01) |
 
 What the table tells us is that at any given time we can access to 32 elements of matrix A (4 rows) and 16 elements of matrix B (2 rows). So, it is not possible to perform a complete inner product, hence, we can generate partial results and store such partial result on the accumulator registers.
 
@@ -100,7 +98,7 @@ Based on the [documentation](https://docs.xilinx.com/r/en-US/am009-versal-ai-eng
 
 | MACs/cycles | lanes | columns | MatA maps to | MatB maps to | Elements on X buffer | Elements on Z buffer | Accumulator | MUL intrinsic |
 |-------------|-------|---------|--------------|--------------|----------------------|----------------------|-------------|---------------|
-|     128     |  16   |   8     | Z buffer     | A buffer     |         64           |          32          |     acc48   |  [Link](https://www.xilinx.com/htmldocs/xilinx2022_2/aiengine_intrinsics/intrinsics/group__vect__mult__8x8.html#ga8676a949b7605d65c4dc6974c793d37b) |
+|     128     |  16   |   8     | Z buffer     | X buffer     |         64           |          32          |     acc48   |  [Link](https://www.xilinx.com/htmldocs/xilinx2022_2/aiengine_intrinsics/intrinsics/group__vect__mult__8x8.html#ga8676a949b7605d65c4dc6974c793d37b) |
 
 What the table tells us is that at any given time we can access to 32 elements of matrix A (4 rows) and 64 elements of matrix B (8 rows). So, it is possible to perform a complete inner product, at least for a subset of matrix A.
 
