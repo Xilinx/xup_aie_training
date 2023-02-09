@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Versal ACAP Design Process Documentation
+    url: https://www.xilinx.com/support/documentation-navigation/design-process/ai-engine-development.html
+    about: Breadth of documentation, resources, and methodologies to accelerate your development on the Versal architecture.
+  - name: University Program
+    url: https://www.xilinx.com/support/university.html
+    about:  Support for academics using AMD tools and technologies for teaching and research.
