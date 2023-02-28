@@ -13,7 +13,6 @@ data_mover:
     for (int i = 0; i < size; i++) {
         ap_axiu<32, 0, 0, 0> x;
         x.data = mem[i];
-        x.keep_all();
         s.write(x);
     }
 }
