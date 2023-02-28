@@ -67,7 +67,7 @@ Follow these steps to get the source code for this tutorial, [Get Source Code](s
 
    ![](images/vadd_lab/vitis_new_app_project_wizard.png)
 
-1. Select `xilinx_vck5000_gen4x8_xdma_2_202210_1` platform and click *Next >*
+1. Select `xilinx_vck5000_gen4x8_qdma_2_202220_1` platform and click *Next >*
 
    If you do not see this platform, check you followed the lab set up instructions to set the `PLATFORM_REPO_PATHS` variable.
 

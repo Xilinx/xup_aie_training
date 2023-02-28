@@ -24,7 +24,7 @@ Follow the [Get Started with AI Engine Development](https://www.xilinx.com/produ
 
 Once you download the files, install them with your package manager.
 
-### Patch the xilinx_vck5000_gen4x8_xdma_2_202210_1 platform
+### Patch the xilinx_vck5000_gen4x8_qdma_2_202220_1 platform
 
 To be able to use the AI Engine on the VCK5000 from the Vitis IDE, please apply this change
 
