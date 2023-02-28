@@ -213,7 +213,6 @@ This is still a software emulation (AIE Simulation), however the simulation take
 
    ![](images/vadd_lab/compare_no_difference.png)
 
-
 ## Assignments for the Reader
 
 The following assignments are optional, however they will help deepen your knowledge about the AIE programming model. No solution is provided for these assignments.
@@ -227,6 +226,8 @@ The following assignments are optional, however they will help deepen your knowl
 1. Change the plio bitwidth in the `input_plio::create()` to either `plio_64_bits` or `plio_128_bits`. What changes do you notice? Is it necessary to make any other changes?
 
    Note that the text files used as stimuli need to be regenerated to match the plio bitwidth, the `write_file` function on the Python file supports this
+
+1. 
 
 If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose)
 
