@@ -42,6 +42,7 @@ AIE_FLAGS += --Xchess="main:bridge.llibs=softfloat m"
 all: $(BUILD_DIR)/libadf.a
 
 $(BUILD_DIR)/libadf.a: $(DEPS)
+	git submodule init && git submodule update
 	@mkdir -p $(BUILD_DIR);
 	cd $(BUILD_DIR); \
 	aiecompiler -v --target=$(TARGET) \
