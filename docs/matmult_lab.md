@@ -31,7 +31,7 @@ In this lab, you will add four different AIE kernels, each of them supporting a 
    * Platform: xilinx_vck5000_gen4x8_xdma_2_202210_1
    * Name: matmult
    * Processor: ai_engine
-   * Domain: ai_engine
+   * Domain: aie_domain
    * Acceleration templates: Empty Application
 
 ### Add source code for the AI Engine domain
@@ -73,6 +73,7 @@ Software emulation (x86 Simulation) uses the files in the data folder as stimuli
    ```console
    grep -v T {0} | sed "s/^[ \t]*//"  | sed "s/[ ^t]*$//" > {0}2 && mv {0}2 {0}
    ```
+
 1. A windows reporting no differences will appear
 
    You can perform the same comparison for the other 3 data types
@@ -89,13 +90,13 @@ This is still a software emulation (AIE Simulation), however the simulation take
 
 1. In the Explore pane, right-click on `matmult [ aie_domain ]` and then select *Run As > Run Configurations...*
 
-   ![](images/matmult_lab/aie_emu_runas_configuration.png)
+   ![Run as Configuration](images/matmult_lab/aie_emu_runas_configuration.png)
 
 1. Double-click on the AI Engine Emulator. This will create a new run configuration
 
 1. Select: Generate Trace, Generate Profile, Generate all reports for selected Active Cores(s) and tick all cores.
 
-   ![](images/matmult_lab/aie_emu_run_configuration.png)
+   ![Run AIE emu](images/matmult_lab/aie_emu_run_configuration.png)
 
 1. Click `Apply` and then `Run`
 
@@ -117,13 +118,13 @@ This is still a software emulation (AIE Simulation), however the simulation take
 
 1. In the Assistant pane, double-click `matmult_system [System] > matmult [AIE] > Emulation-AIE > Run Summary (default)`
 
-   ![](images/matmult_lab/aie_emu_run_summary.png)
+   ![AIE Run Summary](images/matmult_lab/aie_emu_run_summary.png)
 
 1. In the Vitis Analyzer open the `Graph` tab
 
 1. Note that there are 4 subgraphs, one for each data type
 
-   ![](images/matmult_lab/aie_vitis_analyzer_graph.png)
+   ![Vitis Analyzer Graph](images/matmult_lab/aie_vitis_analyzer_graph.png)
 
 1. Questions for the reader
 
@@ -157,7 +158,7 @@ If we analyze the AI Engine Simulation Tab in Vitis Analyzer, you can find Profi
 
 1. Check the Total Function Time for Tile (22,1)
 
-   ![](images/matmult_lab/aie_vitis_analyzer_profiler.png)
+   ![Vitis Analyzer Profiler](images/matmult_lab/aie_vitis_analyzer_profiler.png)
 
    As you can see the matmult_int16 kernel takes 72 cycles to complete
 
@@ -165,7 +166,7 @@ If we analyze the AI Engine Simulation Tab in Vitis Analyzer, you can find Profi
 
 1. You can open the Trace, this reports all of the activity for the selected AI Engine Tiles
 
-   ![](images/matmult_lab/aie_vitis_analyzer_trace.png)
+   ![Vitis Analyzer Tracer](images/matmult_lab/aie_vitis_analyzer_trace.png)
 
    Note that for the matmult_int16 kernels there a two memory stalls (in red), but these are minimal. You can also explore the activity for the other Tiles.
 
@@ -184,14 +185,13 @@ The Profile and Trace will help you analyze the activity on your AIE kernel code
 
 1. Open the Compiled Summary
 
-   If you explore the Array tab, you can see that `matmult_int16` and `mat_multint8`kernels are now mapped to the Tile (22,1). This means that now, we only use 3 Tiles for the kernels and 8 for the buffers, based on the summary information.
+   If you explore the Array tab, you can see that `matmult_int16` and `mat_multint8` kernels are now mapped to the Tile (22,1). This means that now, we only use 3 Tiles for the kernels and 8 for the buffers, based on the summary information.
 
 1. Recommended exploration for curious readers
 
    Change the runtime ratio of all kernels to 22.
    How many Tiles are used for the Kernels?
    How many Tiles are used for buffers?
-
 
 ## Assignments for the Reader
 
@@ -266,7 +266,7 @@ Q2: Three double buffers for each kernel are used, twelve double buffers in tota
 
 Q3: Yes, based on the tables above, you can see that AI Engine tile (27,1), (26,1), (23,1) and (22,1) are used only for its memory.
 
-   ![](images/matmult_lab/aie_vitis_analyzer_graph_tiles.png)
+   ![Vitis Analyzer Graph Tiles](images/matmult_lab/aie_vitis_analyzer_graph_tiles.png)
 
 Q4: **1250 MHz**. Find this in Summary tab within the Vitis Analyzer, AI ENGINE FREQUENCY
 

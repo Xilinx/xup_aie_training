@@ -11,7 +11,9 @@ Welcome to the XUP Vitis-based AI Engine tutorial. These labs will provide hands
 The tutorial instructions target the following hardware and software:
 
 * Vitis 2022.2
+
 * XRT 2.14.354
+
 * AWS EC2 Instances, no VCK5000 hardware at the moment.
 
 This tutorial shows you how to use Vitis with AWS EC2 F1. Source code is provided. You may be able to use the Vitis tutorial instructions with other cloud providers or your local hardware.

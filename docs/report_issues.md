@@ -20,8 +20,11 @@ When reporting an issue provide the following information.
 - Tools and OS versions if the issue is in a lab
 
   - `vitis -version`
+
   - `xbutil --version`
+
   - `lsb_release -a`
+
   - VCK5000 platform information
 
 Report the issue to your instructor or open a [new issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose).

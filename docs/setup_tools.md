@@ -4,7 +4,6 @@ layout: default
 
 # Setup Tools and Source code
 
-
 ## Get Source Code
 
 {% include codeHeader.html %}

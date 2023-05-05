@@ -22,7 +22,6 @@ layout: default
    - Integrate Application using Vitis Tool flow
    - Debugging the AIE application
 
-
 1. AIE Kernel and Graph Programming [UG1079](https://docs.xilinx.com/r/en-US/ug1079-ai-engine-kernel-coding)
    - Programming
      - Scalar and Vector

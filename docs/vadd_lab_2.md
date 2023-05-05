@@ -32,10 +32,13 @@ This lab uses an adder kernel on the AI Engine and three datamovers on the Adapt
 
 Concepts
 
-- PL and x86 domain
-- Linking file
-- HW emulation
-- Implement and run on hardware
+* PL and x86 domain
+
+* Linking file
+
+* HW emulation
+
+* Implement and run on hardware
 
 ## Steps
 
