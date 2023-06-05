@@ -16,7 +16,6 @@ layout: default
 
 For the AI Engine kernel we will use the [FFT/iFFT](https://docs.xilinx.com/r/en-US/Vitis_Libraries/dsp/user_guide/L2/func-fft.html) as well as the [single rate, symmetrical](https://docs.xilinx.com/r/en-US/Vitis_Libraries/dsp/user_guide/L2/func-fir-filters.html) FIR filter from the DSP Libraries.
 
-
 The templated parameters for the 1D FFT are defined [here](https://docs.xilinx.com/r/en-US/Vitis_Libraries/dsp/rst/class_xf_dsp_aie_fft_dit_1ch_fft_ifft_dit_1ch_graph.html_0)
 
 The templated parameters for the symmetrical FIR filter are defined [here](https://docs.xilinx.com/r/en-US/Vitis_Libraries/dsp/rst/class_xf_dsp_aie_fir_sr_sym_fir_sr_sym_graph.html)
@@ -55,7 +54,7 @@ The FFT kernel depends in the [Vitis Library](https://github.com/Xilinx/Vitis_Li
 
 1. In Vitis Analyzer, open the Graph tab
 
-   ![](images/dsp_lab/initial_graph.png)
+   ![DSP Initial Graph](images/dsp_lab/initial_graph.png)
 
    Note that the Flat view is used
 
@@ -155,7 +154,7 @@ In an AMD preconfigured instance you can run `code $HOME/xup_aie_training/source
 
 1. In Vitis Analyzer, open the Graph tab
 
-   ![](images/dsp_lab/graph_with_cascade.png)
+   ![Graph with cascade](images/dsp_lab/graph_with_cascade.png)
 
    Note only a portion of the graph is shown.
 

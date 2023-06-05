@@ -18,7 +18,7 @@ This section is only intended to provide context in order to understand the foll
 
 Animation coming soon
 
-![](images/animations/MatrixMult.mp4)
+![General Matrix Multiplication](images/animations/MatrixMult.mp4)
 
 Matrix multiplication has a high computation intensity due to the number of required operations to compute the output result. Accelerating matrix multiplication is well covered in the literature both for CPU and GPU.
 
@@ -27,13 +27,17 @@ Matrix multiplication has a high computation intensity due to the number of requ
 In the remainder of this document, we cover how the matrix multiplication is performed in the AI Engine tile for 4 different data types
 
 * float
+
 * int32
+
 * int16
+
 * int8
 
 For simplicity, we consider the following operation A x B = C, where the size of matrix A and B (for the purpose of this description) are described below:
 
 * A is either 8x8 or 4x8. The described algorithm for AIE can be extrapolated for A = Nx8, where N must be a multiple of 4
+
 * B is 8x8. The described algorithm for AIE can be extrapolated for B = 8xN
 
 Please note that for a given data type, there may be other ways of breaking down the computation on the AI Engine tile. We only describe one of them.

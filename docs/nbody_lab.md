@@ -4,7 +4,7 @@ layout: default
 
 # N-Body Simulation lab
 
-Coming soon 
+Coming soon
 <!--
 ## Introduction
 

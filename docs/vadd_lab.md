@@ -20,20 +20,27 @@ This lab uses an adder kernel on the AI Engine and three datamovers on the Adapt
 
 Concepts
 
-- The source code is written on C++.
-- Linking file
-- Run AI Engine x86 simulation
-- Run AI Engine simulation
+* The source code is written on C++
+
+* Linking file
+
+* Run AI Engine x86 simulation
+
+* Run AI Engine simulation
 
 ## Objectives of this lab
 
 After completing this lab, you will learn to:
 
-- Create a project using the Vitis GUI
-- Run AI Engine software simulation
-- Run AI Engine software emulation
-- Linking kernels between Adaptable and AI Engines
-- Run hardware
+* Create a project using the Vitis GUI
+
+* Run AI Engine software simulation
+
+* Run AI Engine software emulation
+
+* Linking kernels between Adaptable and AI Engines
+
+* Run hardware
 
 ## Steps
 
@@ -89,10 +96,13 @@ Follow these steps to get the source code for this tutorial, [Get Source Code](s
 
    ![](images/vadd_lab/vitis_ide_project.png)
 
-   - The Explorer view: displays a file-oriented tree view of the project folders and their associated files
-   - The Assistant view: central location to view and manage the projects within the workspace. You can interact with the project settings and reports.
-   - Project Editor view: displays the current project, the target platform, the active build configuration and specified hardware functions. It also allows you to edit the project settings
-   - Console view, presents multiple views including the command console, design guidance, project properties, logs and terminal views
+   * The Explorer view: displays a file-oriented tree view of the project folders and their associated files
+
+   * The Assistant view: central location to view and manage the projects within the workspace. You can interact with the project settings and reports
+
+   * Project Editor view: displays the current project, the target platform, the active build configuration and specified hardware functions. It also allows you to edit the project settings
+
+   * Console view, presents multiple views including the command console, design guidance, project properties, logs and terminal views
 
    For more information about the Vitis IDE check out the [documentation](https://docs.xilinx.com/r/en-US/ug1393-vitis-application-acceleration/Understanding-the-Vitis-IDE)
 
