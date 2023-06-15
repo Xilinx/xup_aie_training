@@ -9,6 +9,7 @@
 
 #include <adf.h>
 
+template<int R=100>
 class MatMultFloatGraph : public adf::graph {
 private:
   adf::kernel k;
@@ -23,13 +24,13 @@ public:
 
     connect<window<NSAMPLES_WINDOW_F_A * NBYTES_FLOAT>> float_ina(ina, k.in[0]);
     connect<window<NSAMPLES_WINDOW_F_B * NBYTES_FLOAT>> float_inb(inb, k.in[1]);
-    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_FLOAT>> float_outc(k.out[0],
-                                                                   outc);
+    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_FLOAT>> float_outc(k.out[0], outc);
     source(k) = "aie_kernels/matmult_float.cpp";
-    runtime<ratio>(k) = 1.f;
+    runtime<ratio>(k) = float(R/100.0);
   }
 };
 
+template<int R=100>
 class MatMultInt32Graph : public adf::graph {
 private:
   adf::kernel k;
@@ -44,13 +45,13 @@ public:
 
     connect<window<NSAMPLES_WINDOW_F_A * NBYTES_INT32>> int32_ina(ina, k.in[0]);
     connect<window<NSAMPLES_WINDOW_F_B * NBYTES_INT32>> int32_inb(inb, k.in[1]);
-    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_INT32>> int32_outc(k.out[0],
-                                                                   outc);
+    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_INT32>> int32_outc(k.out[0], outc);
     source(k) = "aie_kernels/matmult_int32.cpp";
-    runtime<ratio>(k) = 1.f;
+    runtime<ratio>(k) = float(R/100.0);
   }
 };
 
+template<int R=100>
 class MatMultInt16Graph : public adf::graph {
 private:
   adf::kernel k;
@@ -65,13 +66,13 @@ public:
 
     connect<window<NSAMPLES_WINDOW_F_A * NBYTES_INT16>> int16_ina(ina, k.in[0]);
     connect<window<NSAMPLES_WINDOW_F_B * NBYTES_INT16>> int16_inb(inb, k.in[1]);
-    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_INT16>> int16_outc(k.out[0],
-                                                                   outc);
+    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_INT16>> int16_outc(k.out[0], outc);
     source(k) = "aie_kernels/matmult_int16.cpp";
-    runtime<ratio>(k) = 1.f;
+   runtime<ratio>(k) = float(R/100.0);
   }
 };
 
+template<int R=100>
 class MatMultInt8Graph : public adf::graph {
 private:
   adf::kernel k;
@@ -86,10 +87,9 @@ public:
 
     connect<window<NSAMPLES_WINDOW_F_A * NBYTES_INT8>> int8_ina(ina, k.in[0]);
     connect<window<NSAMPLES_WINDOW_F_B * NBYTES_INT8>> int8_inb(inb, k.in[1]);
-    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_INT8>> int8_outc(k.out[0],
-                                                                 outc);
+    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_INT8>> int8_outc(k.out[0], outc);
     source(k) = "aie_kernels/matmult_int8.cpp";
-    runtime<ratio>(k) = 1.f;
+    runtime<ratio>(k) = float(R/100.0);
   }
 };
 
@@ -99,10 +99,10 @@ public:
   std::array<adf::input_plio, num_input> in;
   std::array<adf::output_plio, num_output> out;
 
-  MatMultFloatGraph FG;
-  MatMultInt32Graph I32G;
-  MatMultInt16Graph I16G;
-  MatMultInt8Graph I8G;
+  MatMultFloatGraph<100> FG;
+  MatMultInt32Graph<100> I32G;
+  MatMultInt16Graph<100> I16G;
+  MatMultInt8Graph<100> I8G;
 
   TopGraph()
       : TopGraph({"DataInFP_A", "DataInFP_B", "DataInI32_A", "DataInI32_B",
