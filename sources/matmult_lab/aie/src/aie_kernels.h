@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <adf.h>
+
 void matmult_float(
   input_window_float* __restrict matA,
   input_window_float* __restrict matB,

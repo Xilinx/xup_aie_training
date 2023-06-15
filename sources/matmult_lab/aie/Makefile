@@ -21,6 +21,7 @@ DEPS += $(SRC_DIR)/aie_kernels.h
 DEPS += $(SRC_DIR)/graph.h
 DEPS += $(SRC_DIR)/system_settings.h
 DEPS += $(SRC_DIR)/aie_kernels/matmult_float.cpp
+DEPS += $(SRC_DIR)/aie_kernels/matmult_generic.h
 DEPS += $(SRC_DIR)/aie_kernels/matmult_int32.cpp
 DEPS += $(SRC_DIR)/aie_kernels/matmult_int16.cpp
 DEPS += $(SRC_DIR)/aie_kernels/matmult_int8.cpp

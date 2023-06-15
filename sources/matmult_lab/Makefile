@@ -36,8 +36,8 @@ BUILD_DIR = build.$(TARGET)
 OUTPUT_DIR = $(shell readlink -f ./$(BUILD_DIR))
 
 AIE_SRCS = $(AIE_DIR)/$(BUILD_DIR)/libadf.a
-XO_SRCS = $(PL_DIR)/$(BUILD_DIR)/mm2s.xo
-XO_SRCS += $(PL_DIR)/$(BUILD_DIR)/s2mm.xo
+PL_KERNELS = mm2s s2mm mm2s_i32_a mm2s_i32_b s2mm_i32_c mm2s_i16_a
+XO_SRCS = $(addprefix $(PL_DIR)/$(BUILD_DIR)/, $(addsuffix .xo, $(PL_KERNELS)))
 HOST_APP = $(HOST_DIR)/matmult.exe
 
 all: $(OUTPUT_DIR)/${XCLBIN_NAME}.xclbin $(HOST_APP)

@@ -24,7 +24,7 @@ source $HOME/.bashrc
 
 ## Verifying Tools Installation
 
-If you are in a live instructor-led XUP tutorial, the tools have been already setup for you. You can also verify the installation of the tools.
+If you are in a live instructor-led AUP tutorial, the tools have been already setup for you. You can also verify the installation of the tools.
 
 ### Verify Vitis & AIE compiler Installation
 
@@ -53,11 +53,11 @@ xbutil --version
 
 ### Verify the VCK5000 platform
 
-Verify that the VCK5000 is available for use by running the following code, this should return a list of files and one of them should have the `xpfm` extension
+Verify that the VCK5000 is available for use by running the following code, this should return a list of directories and files, one of them should have the `xpfm` extension
 
 {% include codeHeader.html %}
 ```sh
-ls $PLATFORM_REPO_PATHS
+ls $PLATFORM_REPO_PATHS/*vck5000*/
 ```
 
 ---------------------------------------
