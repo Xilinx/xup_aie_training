@@ -148,7 +148,7 @@ void matmult_int8(input_window<int8> *__restrict matA,
 }
 ```
 
-The shape MxKxN is 4,8,8 which means that the tile size for matrix A is 4x8 and for matrix B is 8x8. This means that the order in which data should be sent to the kernels is as follow:
+The shape MxKxN is 4,8,8 which means that the tile size for matrix A is 4x8 and for matrix B is 8x8. This means that the order in which data should be sent to the kernels is the same as the matrices we are using:
 
 ![Matrix Multiplication int16](images/matmult_lab/matmul_int8_tiling.png)
 
