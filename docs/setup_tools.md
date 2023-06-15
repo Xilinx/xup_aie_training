@@ -24,7 +24,7 @@ source $HOME/.bashrc
 
 ## Verifying Tools Installation
 
-If you are in a live instructor-led XUP tutorial, the tools have been already setup for you. You can also verify the installation of the tools.
+If you are in a live instructor-led AUP tutorial, the tools have been already setup for you. You can also verify the installation of the tools.
 
 ### Verify Vitis & AIE compiler Installation
 

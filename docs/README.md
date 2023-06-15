@@ -2,11 +2,11 @@
 DO NOT add layout, it will prevent README.md to be render as index.html by GitHub pages
 -->
 
-# Xilinx University Program AI Engine Tutorial
+# AMD University Program AI Engine Tutorial
 
 ## Introduction
 
-Welcome to the XUP Vitis-based AI Engine tutorial. These labs will provide hands-on experience using the [Vitis unified software platform](https://www.xilinx.com/products/design-tools/vitis.html) with Xilinx FPGA hardware. You will learn how to develop applications using the Vitis development environment.
+Welcome to the AUP Vitis-based AI Engine tutorial. These labs will provide hands-on experience using the [Vitis unified software platform](https://www.xilinx.com/products/design-tools/vitis.html) with AMD FPGA hardware. You will learn how to develop applications using the Vitis development environment.
 
 The tutorial instructions target the following hardware and software:
 
@@ -30,9 +30,9 @@ You can run this tutorial in different ways.
 
 Once you have decided how you want to run the tutorial, follow the appropriate instructions below.
 
-### XUP AWS Tutorial
+### AUP AWS Tutorial
 
-If you are attending an instructor-led XUP tutorial, preconfigured instances will be provided for you. Use the following instructions to [connect to your assigned AWS XUP tutorial instance](setup_workshop.md).
+If you are attending an instructor-led AUP tutorial, preconfigured instances will be provided for you. Use the following instructions to [connect to your assigned AWS AUP tutorial instance](setup_workshop.md).
 
 ### Local computer
 

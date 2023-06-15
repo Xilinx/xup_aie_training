@@ -1,4 +1,4 @@
-# Xilinx University Program AI Engine Tutorial
+# AMD University Program AI Engine Tutorial
 
 View this repository on GitHub pages: [https://xilinx.github.io/xup_aie_training/](https://xilinx.github.io/xup_aie_training/)
 
