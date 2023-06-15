@@ -24,7 +24,7 @@ You can run this tutorial in different ways.
 
 1. If you have an VCK5000 board, you can run all parts of the tutorial on a local machine.
 
-1. You can use the Vitis software in the cloud, with hardware in the cloud (VMAccel).
+1. You can use the Vitis software in the cloud, with hardware in the cloud ([VMAccel](https://vmaccel.com/solutions/)).
 
 1. You can use the Vitis software on a local machine for building designs, and only switch to the cloud to deploy in hardware, make sure you build for the correct shell.
 

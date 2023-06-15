@@ -53,11 +53,11 @@ xbutil --version
 
 ### Verify the VCK5000 platform
 
-Verify that the VCK5000 is available for use by running the following code, this should return a list of files and one of them should have the `xpfm` extension
+Verify that the VCK5000 is available for use by running the following code, this should return a list of directories and files, one of them should have the `xpfm` extension
 
 {% include codeHeader.html %}
 ```sh
-ls $PLATFORM_REPO_PATHS
+ls $PLATFORM_REPO_PATHS/*vck5000*/
 ```
 
 ---------------------------------------
