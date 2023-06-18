@@ -114,7 +114,7 @@ Follow these steps to get the source code for this tutorial, [Get Source Code](s
 
 1. In the Import Source window, click *Browse...*, then navigate to `$HOME/xup_aie_training/sources/vadd_lab/aie` and click *Open*.
 
-1. Tick the *aie_domain* box
+1. Tick the *aie* box
 
 1. Update the field *Into folder:* **aie_vadd**
 
