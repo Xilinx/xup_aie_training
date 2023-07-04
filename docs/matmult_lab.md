@@ -204,7 +204,7 @@ The following assignments are optional, however they will help deepen your knowl
 
    For instance a Matrix Multiplication where A is 64x64 and B is 64x64. You can go one step further and use the cascade interface to further partition the multiplication between different Tiles
 
-It is recommended that you increase the [stack size](#stack-size) and the [simulation cycle timeout](#simulation-cycle-timeout)
+It is recommended that you increase the [stack size](#increase-stack-size) and the [simulation cycle timeout](#increase-simulation-cycle-timeout)
 
 If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose)
 
@@ -284,11 +284,11 @@ Q7:
 | int16      | 72     |
 | int8       | 37     |
 
-### Increase Stack
+### Increase Stack Size
 
 1. Right-click `matmult [ aie_domain ]`, then select *C/C++ Build Settings*
 
-   ![](images/vadd_lab/aie_cpp_settings.png)
+   ![C/C++ Settings](images/vadd_lab/aie_cpp_settings.png)
 
 1. In the Properties for matmult windows, under *C/C++ Build* select `Settings`, then make sure you select `[All configurations]`
 
