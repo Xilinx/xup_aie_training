@@ -24,23 +24,10 @@ Dimensions
 #define F_Rc (F_Ra)
 #define F_Cc (F_Cb)
 
-// Complex Floating-Point Example
-#define CF_Ra 16
-#define CF_Ca 4
-#define CF_Rb (CF_Ca)
-#define CF_Cb 4
-
-#define CF_Rc (CF_Ra)
-#define CF_Cc (CF_Cb)
-
 // Window size
 #define NSAMPLES_WINDOW_F_A (F_Ra*F_Ca)
 #define NSAMPLES_WINDOW_F_B (F_Rb*F_Cb)
 #define NSAMPLES_WINDOW_F_C (F_Rc*F_Cc)
-
-#define NSAMPLES_WINDOW_CF_A (CF_Ra*CF_Ca)
-#define NSAMPLES_WINDOW_CF_B (CF_Rb*CF_Cb)
-#define NSAMPLES_WINDOW_CF_C (CF_Rc*CF_Cc)
 
 #define NBYTES_FLOAT 4
 #define NBYTES_INT32 4
