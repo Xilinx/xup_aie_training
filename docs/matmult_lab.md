@@ -288,7 +288,7 @@ Q7:
 
 1. Right-click `matmult [ aie_domain ]`, then select *C/C++ Build Settings*
 
-   ![C/C++ Settings](images/vadd_lab/aie_cpp_settings.png)
+   ![C/C++ Settings](images/matmult_lab/aie_cpp_settings.png)
 
 1. In the Properties for matmult windows, under *C/C++ Build* select `Settings`, then make sure you select `[All configurations]`
 
