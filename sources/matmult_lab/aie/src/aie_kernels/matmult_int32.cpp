@@ -10,16 +10,19 @@
 /*
 Matrix A dimensions -> 16x8
 Matrix B dimensions ->  8x8
-Block dimensions    -> 2x4, 4x4
+Block dimensions    -> 4x2, 2x4
 */
 
 void matmult_int32(input_window<int32> *__restrict matA,
                    input_window<int32> *__restrict matB,
-                   output_window<int32> *__restrict matC)
-{
-    mmul_blocked<2, 4, 4, int32>(F_Ra/2,
-                                 F_Ca/4,
-                                 F_Cb/4,
+                   output_window<int32> *__restrict matC){
+
+    constexpr unsigned M = 4;
+    constexpr unsigned K = 2;
+    constexpr unsigned N = 4;
+    mmul_blocked<M, K, N, int32>(F_Ra/M,
+                                 F_Ca/K,
+                                 F_Cb/N,
                                  reinterpret_cast<const int32 *>(matA->ptr),
                                  reinterpret_cast<const int32 *>(matB->ptr),
                                  reinterpret_cast<int32 *>(matC->ptr));

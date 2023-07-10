@@ -46,6 +46,7 @@ def mat2file_tile(mat: np.array, R: int, C: int, file: str,
 
     cols = plio//(mat.dtype.itemsize*8)
     with open(file, 'w', newline='', encoding="utf-8") as f:
+        idx = 0
         for r in range(0, mat.shape[0], R):
             for c in range(0, mat.shape[1], C):
                 for rr in range(r, r+R):
@@ -56,9 +57,11 @@ def mat2file_tile(mat: np.array, R: int, C: int, file: str,
                         else:
                             v = mat[rr][cc]
                         f.write(f'{v}')
-                        if (cc+1) % cols == 0:
+                        if (idx + 1) % cols == 0:
+                            idx = 0
                             f.write('\n')
                         else:
+                            idx += 1
                             f.write(' ')
 
 
@@ -71,33 +74,33 @@ def main():
     a = np.float32(np.trunc(np.random.rand(*shape_a) * c0))
     b = np.float32(np.trunc(np.random.rand(*shape_b) * c1))
     c = np.matmul(a, b)
-    mat2file_tile(a, 2, 4, "inputa_float.txt")
-    mat2file_tile(b, 4, 4, "inputb_float.txt")
-    mat2file_tile(c, 2, 4, "ref_outputc_float.txt", sn=True)
+    mat2file_tile(a, 4, 2, "inputa_float.txt")
+    mat2file_tile(b, 2, 4, "inputb_float.txt")
+    mat2file_tile(c, 4, 4, "ref_outputc_float.txt", sn=True)
 
     # int32
     a = np.random.randint(-1*2**12, 2**12, size=(shape_a), dtype=np.int32)
     b = np.random.randint(-1*2**12, 2**12, size=(shape_b), dtype=np.int32)
     c = np.matmul(a, b)
-    mat2file_tile(a, 2, 4, "inputa_int32.txt")
-    mat2file_tile(b, 4, 4, "inputb_int32.txt")
-    mat2file_tile(c, 2, 4, "ref_outputc_int32.txt")
+    mat2file_tile(a, 4, 2, "inputa_int32.txt")
+    mat2file_tile(b, 2, 4, "inputb_int32.txt")
+    mat2file_tile(c, 4, 4, "ref_outputc_int32.txt")
 
     # 16-bit
     a = np.random.randint(-1*2**5, 2**5, size=(shape_a), dtype=np.int16)
     b = np.random.randint(-1*2**5, 2**5, size=(shape_b), dtype=np.int16)
     c = np.matmul(a, b)
-    mat2file_tile(a, 2, 4, "inputa_int16.txt")
+    mat2file_tile(a, 4, 4, "inputa_int16.txt")
     mat2file_tile(b, 4, 8, "inputb_int16.txt")
-    mat2file_tile(c, 2, 8, "ref_outputc_int16.txt")
+    mat2file_tile(c, 4, 8, "ref_outputc_int16.txt")
 
     # 8-bit
     a = np.random.randint(-1*2**4, 2**6, size=(shape_a), dtype=np.int8)
     b = np.random.randint(-1*2**4, 2**6, size=(shape_b), dtype=np.int8)
     c = np.matmul(a, b)
     mat2file_tile(a, 4, 8, "inputa_int8.txt")
-    mat2file_tile(b, 8, 8, "inputb_int8.txt")
-    mat2file_tile(c, 4, 8, "ref_outputc_int8.txt")
+    mat2file_tile(b, 8, 4, "inputb_int8.txt")
+    mat2file_tile(c, 4, 4, "ref_outputc_int8.txt")
 
     # Mixed precision
     # A is 16-bit and B is 8-bit
