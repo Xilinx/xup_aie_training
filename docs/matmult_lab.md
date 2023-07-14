@@ -279,10 +279,12 @@ Q7:
 
 | data type  | Cycles |
 |------------|--------|
-| float      | 347    |
-| int32      | 224    |
-| int16      | 72     |
-| int8       | 37     |
+| float      | 257    |
+| int32      | 202    |
+| int16      | 60     |
+| int8       | 34     |
+
+For such small matrix sizes the overhead is significative. However, for larger matrices the efficiency of the code is much higher.
 
 ### Increase Stack Size
 
