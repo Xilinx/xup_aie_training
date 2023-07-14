@@ -33,7 +33,7 @@ $(BUILD_DIR)/libadf.a: $(DEPS)
 	@mkdir -p $(BUILD_DIR);
 	cd $(BUILD_DIR); \
 	aiecompiler -v --target=$(TARGET) \
-		--stacksize=2048 \
+		--stacksize=1024 \
 		-include="$(XILINX_VITIS)/aietools/include" \
 		-include="$(SRC_DIR)"  \
 		-include="$(DATA_DIR)" \
