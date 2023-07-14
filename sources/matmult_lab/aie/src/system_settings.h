@@ -28,8 +28,3 @@ Dimensions
 #define NSAMPLES_WINDOW_F_A (F_Ra*F_Ca)
 #define NSAMPLES_WINDOW_F_B (F_Rb*F_Cb)
 #define NSAMPLES_WINDOW_F_C (F_Rc*F_Cc)
-
-#define NBYTES_FLOAT 4
-#define NBYTES_INT32 4
-#define NBYTES_INT16 2
-#define NBYTES_INT8 1

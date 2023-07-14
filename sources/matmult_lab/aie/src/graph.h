@@ -22,9 +22,9 @@ public:
     using namespace adf;
     k = kernel::create(matmult_float);
 
-    connect<window<NSAMPLES_WINDOW_F_A * NBYTES_FLOAT>> float_ina(ina, k.in[0]);
-    connect<window<NSAMPLES_WINDOW_F_B * NBYTES_FLOAT>> float_inb(inb, k.in[1]);
-    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_FLOAT>> float_outc(k.out[0], outc);
+    connect<window<NSAMPLES_WINDOW_F_A * sizeof(float)>> float_ina(ina, k.in[0]);
+    connect<window<NSAMPLES_WINDOW_F_B * sizeof(float)>> float_inb(inb, k.in[1]);
+    connect<window<NSAMPLES_WINDOW_F_C * sizeof(float)>> float_outc(k.out[0], outc);
     source(k) = "aie_kernels/matmult_float.cpp";
     runtime<ratio>(k) = float(R/100.0);
   }
@@ -43,9 +43,9 @@ public:
     using namespace adf;
     k = kernel::create(matmult_int32);
 
-    connect<window<NSAMPLES_WINDOW_F_A * NBYTES_INT32>> int32_ina(ina, k.in[0]);
-    connect<window<NSAMPLES_WINDOW_F_B * NBYTES_INT32>> int32_inb(inb, k.in[1]);
-    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_INT32>> int32_outc(k.out[0], outc);
+    connect<window<NSAMPLES_WINDOW_F_A * sizeof(int32)>> int32_ina(ina, k.in[0]);
+    connect<window<NSAMPLES_WINDOW_F_B * sizeof(int32)>> int32_inb(inb, k.in[1]);
+    connect<window<NSAMPLES_WINDOW_F_C * sizeof(int32)>> int32_outc(k.out[0], outc);
     source(k) = "aie_kernels/matmult_int32.cpp";
     runtime<ratio>(k) = float(R/100.0);
   }
@@ -64,9 +64,9 @@ public:
     using namespace adf;
     k = kernel::create(matmult_int16);
 
-    connect<window<NSAMPLES_WINDOW_F_A * NBYTES_INT16>> int16_ina(ina, k.in[0]);
-    connect<window<NSAMPLES_WINDOW_F_B * NBYTES_INT16>> int16_inb(inb, k.in[1]);
-    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_INT16>> int16_outc(k.out[0], outc);
+    connect<window<NSAMPLES_WINDOW_F_A * sizeof(int16)>> int16_ina(ina, k.in[0]);
+    connect<window<NSAMPLES_WINDOW_F_B * sizeof(int16)>> int16_inb(inb, k.in[1]);
+    connect<window<NSAMPLES_WINDOW_F_C * sizeof(int16)>> int16_outc(k.out[0], outc);
     source(k) = "aie_kernels/matmult_int16.cpp";
    runtime<ratio>(k) = float(R/100.0);
   }
@@ -85,9 +85,9 @@ public:
     using namespace adf;
     k = kernel::create(matmult_int8);
 
-    connect<window<NSAMPLES_WINDOW_F_A * NBYTES_INT8>> int8_ina(ina, k.in[0]);
-    connect<window<NSAMPLES_WINDOW_F_B * NBYTES_INT8>> int8_inb(inb, k.in[1]);
-    connect<window<NSAMPLES_WINDOW_F_C * NBYTES_INT8>> int8_outc(k.out[0], outc);
+    connect<window<NSAMPLES_WINDOW_F_A * sizeof(int8)>> int8_ina(ina, k.in[0]);
+    connect<window<NSAMPLES_WINDOW_F_B * sizeof(int8)>> int8_inb(inb, k.in[1]);
+    connect<window<NSAMPLES_WINDOW_F_C * sizeof(int8)>> int8_outc(k.out[0], outc);
     source(k) = "aie_kernels/matmult_int8.cpp";
     runtime<ratio>(k) = float(R/100.0);
   }
