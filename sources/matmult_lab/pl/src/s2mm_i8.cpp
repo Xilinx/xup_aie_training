@@ -1,0 +1,16 @@
+// Copyright (C) 2023 Advanced Micro Devices, Inc
+//
+// SPDX-License-Identifier: MIT
+
+#include "tiled_s2mm.h"
+
+extern "C" {
+
+// int8 matrix multiplication
+// C in blocks of 2x4
+void s2mm_i8(ap_int<8> *mem, hls::stream<qdma_axis<8, 0, 0, 0>> &s, int size_bytes)
+{
+    s2mm_tiled<16, 8, 4, 4, 8>(mem, s, size_bytes);
+}
+
+} // extern "C"
