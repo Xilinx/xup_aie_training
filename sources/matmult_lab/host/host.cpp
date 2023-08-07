@@ -40,13 +40,13 @@ const PLKernelNames &kernelNames() = delete;
 
 template <>
 const PLKernelNames &kernelNames<float>() {
-    static PLKernelNames names{"mm2s_i32_a:{mm2s_fp_a}", "mm2s_i32_b:{mm2s_fp_b}", "s2mm_i32_c:{s2mm_fp}"};
+    static PLKernelNames names{"mm2s_i32_a:{mm2s_fp_a}", "mm2s_i32_b:{mm2s_fp_b}", "s2mm_i32:{s2mm_fp}"};
     return names;
 }
 
 template <>
 const PLKernelNames &kernelNames<int32_t>() {
-    static PLKernelNames names{"mm2s_i32_a:{mm2s_i32_a}", "mm2s_i32_b:{mm2s_i32_b}", "s2mm_i32_c:{s2mm_i32}"};
+    static PLKernelNames names{"mm2s_i32_a:{mm2s_i32_a}", "mm2s_i32_b:{mm2s_i32_b}", "s2mm_i32:{s2mm_i32}"};
     return names;
 }
 
@@ -58,7 +58,7 @@ const PLKernelNames &kernelNames<int16_t>() {
 
 template <>
 const PLKernelNames &kernelNames<int8_t>() {
-    static PLKernelNames names{"mm2s:{mm2s_i8_a}", "mm2s:{mm2s_i8_b}", "s2mm:{s2mm_i8}"};
+    static PLKernelNames names{"mm2s:{mm2s_i8_a}", "mm2s_i8_b:{mm2s_i8_b}", "s2mm_i8:{s2mm_i8}"};
     return names;
 }
 
