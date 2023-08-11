@@ -33,7 +33,7 @@ $(BUILD_DIR)/libadf.a: $(DEPS)
 	@mkdir -p $(BUILD_DIR);
 	cd $(BUILD_DIR); \
 	aiecompiler -v --target=$(TARGET) \
-		--stacksize=2000 \
+		--stacksize=1024 \
 		-include="$(XILINX_VITIS)/aietools/include" \
 		-include="$(SRC_DIR)"  \
 		-include="$(DATA_DIR)" \
@@ -43,3 +43,11 @@ $(BUILD_DIR)/libadf.a: $(DEPS)
 
 clean:
 	rm -rf $(BUILD_DIR)
+
+aieemu:
+	cd $(BUILD_DIR); \
+	aiesimulator --pkg-dir=$(WORK_DIR) --i=.. --profile --dump-vcd=foo --simulation-cycle-timeout=200000
+
+x86sim:
+	cd $(BUILD_DIR); \
+	x86simulator --pkg-dir=$(WORK_DIR) --i=..

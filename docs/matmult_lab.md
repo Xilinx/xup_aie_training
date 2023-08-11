@@ -204,6 +204,12 @@ The following assignments are optional, however they will help deepen your knowl
 
    For instance a Matrix Multiplication where A is 64x64 and B is 64x64. You can go one step further and use the cascade interface to further partition the multiplication between different Tiles
 
+It is recommended that you increase the [simulation cycle timeout](#increase-simulation-cycle-timeout).
+
+<!--
+It is also recommended that you increase the [stack size](#increase-stack-size) if you change the shape of the tiling.
+-->
+
 If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose)
 
 ## Build Hardware
@@ -277,10 +283,42 @@ Q7:
 
 | data type  | Cycles |
 |------------|--------|
-| float      | 347    |
-| int32      | 224    |
-| int16      | 72     |
-| int8       | 37     |
+| float      | 257    |
+| int32      | 202    |
+| int16      | 60     |
+| int8       | 34     |
+
+For such small matrix sizes the overhead is significative. However, for larger matrices the efficiency of the code is much higher.
+
+### Increase Simulation Cycle Timeout
+
+1. In the Explore pane, right-click on `matmult [ aie_domain ]` and then select *Run As > Run Configurations...*
+
+   ![Run as Configuration](images/matmult_lab/aie_emu_runas_configuration.png)
+
+1. Select *Arguments* and add `--simulation-cycle-timeout=200000`
+
+   ![Run as Configuration](images/matmult_lab/aie_emu_cycle_timeout.png)
+
+1. Click `Apply` and then `Run`
+
+   The emulation takes around 4-5 minutes
+
+### Increase Stack Size
+
+1. Right-click `matmult [ aie_domain ]`, then select *C/C++ Build Settings*
+
+   ![C/C++ Settings](images/matmult_lab/aie_cpp_settings.png)
+
+1. In the Properties for matmult windows, under *C/C++ Build* select `Settings`, then make sure you select `[All configurations]`
+
+1. Under *AIE C Compiler* select *Miscellaneous* and set the `Stack Size` to 2048
+
+   ![Increase Stack Size](images/matmult_lab/aie_increase_stack_size.png)
+
+1. Click *Apply and Close*
+
+1. Compile AIE code
 
 ---------------------------------------
 <p align="center">Copyright&copy; 2023 Advanced Micro Devices</p>

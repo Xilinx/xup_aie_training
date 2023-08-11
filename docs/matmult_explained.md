@@ -99,58 +99,98 @@ The templated parameters and arguments are defined below:
 The call to the `mmul_blocked` for the data types int32 and float is shown below
 
 ```c++
-void matmult_<int32|float>(input_window<int32> *__restrict matA,
+void matmult_int32(input_window<int32> *__restrict matA,
                    input_window<int32> *__restrict matB,
-                   output_window<int32> *__restrict matC) {
-    mmul_blocked<2, 4, 4, int32>(F_Ra/2,
-                                 F_Ca/4,
-                                 F_Cb/4,
+                   output_window<int32> *__restrict matC){
+
+    constexpr unsigned M = 4;
+    constexpr unsigned K = 2;
+    constexpr unsigned N = 4;
+    mmul_blocked<M, K, N, int32>(F_Ra/M,
+                                 F_Ca/K,
+                                 F_Cb/N,
                                  reinterpret_cast<const int32 *>(matA->ptr),
                                  reinterpret_cast<const int32 *>(matB->ptr),
                                  reinterpret_cast<int32 *>(matC->ptr));
 }
 ```
 
-The shape MxKxN is 2,4,4 which means that the tile size for matrix A is 2x4 and for matrix B is 4x4. This means that the order in which data should be sent to the kernels is as follow:
+> Note: the call for `matmult_float` uses the same shape
+
+The shape MxKxN is 4,2,4 which means that the tile size for matrix A is 4x2 and for matrix B is 2x4. This means that the order in which data should be sent to the kernels is as follow:
 
 ![Matrix Multiplication int32 and float tiling](images/matmult_lab/matmul_float_tiling.png)
 
+We provide a Python utility to visualize how data is consumed by the kernel: [memory_view.py](https://github.com/Xilinx/xup_aie_training/tree/main/sources/matmult_lab/aie/data/memory_view.py)
+
+```sh
+python3 memory_view.py --rows 16 --cols 8 --R 4 --C 2 --name a -p
+python3 memory_view.py --rows 8 --cols 8 --R 2 --C 4 --name b -p
+```
+
 ### Matrix Multiplication int16
 
-The call to the `mmul_blocked` for the data types int32 and float is shown below
+The call to the `mmul_blocked` for the data types int16 and float is shown below
 
 ```c++
 void matmult_int16(input_window<int16> *__restrict matA,
                    input_window<int16> *__restrict matB,
                    output_window<int16> *__restrict matC){
-    mmul_blocked<2, 4, 8, int16>(F_Ra/2,
-                                 F_Ca/4,
-                                 F_Cb/8,
+
+    constexpr unsigned M = 4;
+    constexpr unsigned K = 4;
+    constexpr unsigned N = 8;
+    mmul_blocked<M, K, N, int16>(F_Ra/M,
+                                 F_Ca/K,
+                                 F_Cb/N,
                                  reinterpret_cast<const int16 *>(matA->ptr),
                                  reinterpret_cast<const int16 *>(matB->ptr),
                                  reinterpret_cast<int16 *>(matC->ptr));
 }
 ```
 
-The shape MxKxN is 2,4,8 which means that the tile size for matrix A is 2x4 and for matrix B is 4x8. This means that the order in which data should be sent to the kernels is as follow:
+The shape MxKxN is 4,4,8 which means that the tile size for matrix A is 4x4 and for matrix B is 4x8. This means that the order in which data should be sent to the kernels is as follow:
 
 ![Matrix Multiplication int16](images/matmult_lab/matmul_int16_tiling.png)
 
+We provide a Python utility to visualize how data is consumed by the kernel: [memory_view.py](https://github.com/Xilinx/xup_aie_training/tree/main/sources/matmult_lab/aie/data/memory_view.py)
+
+```sh
+python3 memory_view.py --rows 16 --cols 8 --R 4 --C 4 --name a -p
+python3 memory_view.py --rows 8 --cols 8 --R 4 --C 8 --name b -p
+```
+
 ### Matrix Multiplication int8
 
-The call to the `mmul_blocked` for the data types int32 and float is shown below
+The call to the `mmul_blocked` for the data types int8 and float is shown below
 
 ```c++
 void matmult_int8(input_window<int8> *__restrict matA,
                   input_window<int8> *__restrict matB,
                   output_window<int8> *__restrict matC){
-    mmul_blocked<4, 8, 8, int8>(F_Ra/4, F_Ca/8, F_Cb/8, matA->ptr, matB->ptr, matC->ptr);
+
+    constexpr unsigned M = 4;
+    constexpr unsigned K = 8;
+    constexpr unsigned N = 4;
+    mmul_blocked<M, K, N, int8>(F_Ra/M,
+                                F_Ca/K,
+                                F_Cb/N,
+                                matA->ptr,
+                                matB->ptr,
+                                matC->ptr);
 }
 ```
 
-The shape MxKxN is 4,8,8 which means that the tile size for matrix A is 4x8 and for matrix B is 8x8. This means that the order in which data should be sent to the kernels is the same as the matrices we are using:
+The shape MxKxN is 4,8,4 which means that the tile size for matrix A is 4x8 and for matrix B is 8x4. This means that the order in which data should be sent to the kernels is the same as the matrices we are using:
 
 ![Matrix Multiplication int16](images/matmult_lab/matmul_int8_tiling.png)
+
+We provide a Python utility to visualize how data is consumed by the kernel: [memory_view.py](https://github.com/Xilinx/xup_aie_training/tree/main/sources/matmult_lab/aie/data/memory_view.py)
+
+```sh
+python3 memory_view.py --rows 16 --cols 8 --R 4 --C 8 --name a -p
+python3 memory_view.py --rows 8 --cols 8 --R 8 --C 4 --name b -p
+```
 
 ---------------------------------------
 <p align="center">Copyright&copy; 2023 Advanced Micro Devices</p>

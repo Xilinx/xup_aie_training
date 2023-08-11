@@ -12,7 +12,7 @@ BUILD_DIR = build.$(TARGET)
 VPP_FLAGS = -t $(TARGET) --platform $(PLATFORM)# --save-temps
 VPP_FLAGS += --kernel_frequency $(FREQ)
 
-TARGETS = mm2s s2mm mm2s_i32_a mm2s_i32_b s2mm_i32_c mm2s_i16_a
+TARGETS = mm2s s2mm mm2s_i32_a mm2s_i32_b s2mm_i32 mm2s_i16_a mm2s_i8_b s2mm_i8
 all: $(addprefix $(BUILD_DIR)/, $(addsuffix .xo,$(TARGETS)))
 
 $(BUILD_DIR)/%.xo: src/%.cpp

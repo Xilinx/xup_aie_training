@@ -10,7 +10,7 @@ extern "C" {
 // A in blocks of 2x4
 void mm2s_i32_a(ap_int<32> *mem, hls::stream<qdma_axis<32, 0, 0, 0>> &s, int size_bytes)
 {
-    mm2s_tiled<16, 8, 2, 4, 32>(mem, s, size_bytes);
+    mm2s_tiled<16, 8, 4, 2, 32>(mem, s, size_bytes);
 }
 
 } // extern "C"
