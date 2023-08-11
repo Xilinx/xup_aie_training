@@ -206,7 +206,9 @@ The following assignments are optional, however they will help deepen your knowl
 
 It is recommended that you increase the [simulation cycle timeout](#increase-simulation-cycle-timeout).
 
+<!--
 It is also recommended that you increase the [stack size](#increase-stack-size) if you change the shape of the tiling.
+-->
 
 If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose)
 
@@ -288,6 +290,20 @@ Q7:
 
 For such small matrix sizes the overhead is significative. However, for larger matrices the efficiency of the code is much higher.
 
+### Increase Simulation Cycle Timeout
+
+1. In the Explore pane, right-click on `matmult [ aie_domain ]` and then select *Run As > Run Configurations...*
+
+   ![Run as Configuration](images/matmult_lab/aie_emu_runas_configuration.png)
+
+1. Select *Arguments* and add `--simulation-cycle-timeout=200000`
+
+   ![Run as Configuration](images/matmult_lab/aie_emu_cycle_timeout.png)
+
+1. Click `Apply` and then `Run`
+
+   The emulation takes around 4-5 minutes
+
 ### Increase Stack Size
 
 1. Right-click `matmult [ aie_domain ]`, then select *C/C++ Build Settings*
@@ -303,20 +319,6 @@ For such small matrix sizes the overhead is significative. However, for larger m
 1. Click *Apply and Close*
 
 1. Compile AIE code
-
-### Increase Simulation Cycle Timeout
-
-1. In the Explore pane, right-click on `matmult [ aie_domain ]` and then select *Run As > Run Configurations...*
-
-   ![Run as Configuration](images/matmult_lab/aie_emu_runas_configuration.png)
-
-1. Select *Arguments* and add `--simulation-cycle-timeout=200000`
-
-   ![Run as Configuration](images/matmult_lab/aie_emu_cycle_timeout.png)
-
-1. Click `Apply` and then `Run`
-
-   The emulation takes around 4-5 minutes
 
 ---------------------------------------
 <p align="center">Copyright&copy; 2023 Advanced Micro Devices</p>
