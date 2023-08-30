@@ -100,7 +100,7 @@ This is still a software emulation (AIE Simulation), however the simulation take
 
 1. Click `Apply` and then `Run`
 
-   The simulation takes around 4-5 minutes
+   The emulation takes around 4-5 minutes
 
 1. In the Explore pane, select at the same time both `matmult [ aie_domain ] > data > ref_outputc_float.txt` and `matmult [ aie_domain ] > Emulation-AIE > aiesimulator_output > float_output.txt`. Then, right-click on one of them and select *Compare With > Each Other After Transformation*
 
@@ -151,7 +151,6 @@ This is still a software emulation (AIE Simulation), however the simulation take
 
    E3: Explore the assembly code for each AI Engine tile. In Vitis, open the file `Emulation-AIE > Work > aie > 22_0 > Release > 22_0.lst`
 
-
 ## Performance Metrics
 
 If we analyze the AI Engine Simulation Tab in Vitis Analyzer, you can find Profile information for each AI Engine tile
@@ -168,13 +167,13 @@ If we analyze the AI Engine Simulation Tab in Vitis Analyzer, you can find Profi
 
    ![Vitis Analyzer Tracer](images/matmult_lab/aie_vitis_analyzer_trace.png)
 
-   Note that for the matmult_int16 kernels there a two memory stalls (in red), but these are minimal. You can also explore the activity for the other Tiles.
+   Note that for the matmult_int16 kernels there memory stalls (in red), but these are minimal. You can also explore the activity for the other Tiles.
 
 The Profile and Trace will help you analyze the activity on your AIE kernel code, find bottlenecks, memory stalls, etc. These reports are key in helping you achieving maximum performance.
 
 ## Change Runtime Ratio
 
-1. Open the `graph.h` file and change the runtime ratio for I16G and I8G, line 99 and 100, to 45.
+1. Open the `graph.h` file and change the runtime ratio for I16G and I8G, line 104 and 105, to 45.
 
    ```c++
    MatMultInt16Graph<45> I16G;
@@ -185,11 +184,11 @@ The Profile and Trace will help you analyze the activity on your AIE kernel code
 
 1. Open the Compiled Summary
 
-   If you explore the Array tab, you can see that `matmult_int16` and `mat_multint8` kernels are now mapped to the Tile (22,1). This means that now, we only use 3 Tiles for the kernels and 8 for the buffers, based on the summary information.
+   If you explore the Array tab, you can see that `matmult_int16` and `matmult_int8` kernels are now mapped to the Tile (22,1). This means that we only use 3 tiles for the kernels and 8 for the buffers, based on the summary information.
 
 1. Recommended exploration for curious readers
 
-   Change the runtime ratio of all kernels to 22.
+   Change the runtime ratio of all kernels to 24.
    How many Tiles are used for the Kernels?
    How many Tiles are used for buffers?
 
@@ -199,11 +198,17 @@ The following assignments are optional, however they will help deepen your knowl
 
 1. Implement a matrix multiplication kernel with mixed precision for mat A and mat B.
 
-   For instance, mat A is `int16` and matB `int8` or vice versa. You can also consider `int32` and `int16`. To help selecting the intrinsic parameter you can use these Python helpers for [lane addressing scheme](https://github.com/Xilinx/xup_aie_training/tree/main/sources/lane_addressing_scheme)
+   For instance, mat A is `int16` and matB `int8` or vice versa. You can also consider `int32` and `int16`. Refer to AIE API Matrix Multiply documentation to find out [supported shapes](https://www.xilinx.com/htmldocs/xilinx2022_2/aiengine_api/aie_api/doc/group__group__mmul.html#group_mmul_page_supported_shapes)
 
 1. Using the existing kernels compute the result of a bigger matrix multiplication
 
-   You can tile the matrix multiplication using the existing kernels, or go one step further and use the cascade interface to realize this
+   For instance a Matrix Multiplication where A is 64x64 and B is 64x64. You can go one step further and use the cascade interface to further partition the multiplication between different Tiles
+
+It is recommended that you increase the [simulation cycle timeout](#increase-simulation-cycle-timeout).
+
+<!--
+It is also recommended that you increase the [stack size](#increase-stack-size) if you change the shape of the tiling.
+-->
 
 If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose)
 
@@ -264,7 +269,7 @@ Q2: Three double buffers for each kernel are used, twelve double buffers in tota
 | buf10 | 22     | 0   | 2       |  64  |
 | buf11 | 23     | 1   | 2       | 128  |
 
-Q3: Yes, based on the tables above, you can see that AI Engine tile (27,1), (26,1), (23,1) and (22,1) are used only for its memory.
+Q3: Yes, based on the Tiles tab, you can see that AI Engine tile (27,1), (26,1), (23,1) and (22,1) are used only for its memory.
 
    ![Vitis Analyzer Graph Tiles](images/matmult_lab/aie_vitis_analyzer_graph_tiles.png)
 
@@ -278,10 +283,42 @@ Q7:
 
 | data type  | Cycles |
 |------------|--------|
-| float      | 231    |
-| int32      | 168    |
-| int16      | 72     |
-| int8       | 45     |
+| float      | 257    |
+| int32      | 202    |
+| int16      | 60     |
+| int8       | 34     |
+
+For such small matrix sizes the overhead is significative. However, for larger matrices the efficiency of the code is much higher.
+
+### Increase Simulation Cycle Timeout
+
+1. In the Explore pane, right-click on `matmult [ aie_domain ]` and then select *Run As > Run Configurations...*
+
+   ![Run as Configuration](images/matmult_lab/aie_emu_runas_configuration.png)
+
+1. Select *Arguments* and add `--simulation-cycle-timeout=200000`
+
+   ![Run as Configuration](images/matmult_lab/aie_emu_cycle_timeout.png)
+
+1. Click `Apply` and then `Run`
+
+   The emulation takes around 4-5 minutes
+
+### Increase Stack Size
+
+1. Right-click `matmult [ aie_domain ]`, then select *C/C++ Build Settings*
+
+   ![C/C++ Settings](images/matmult_lab/aie_cpp_settings.png)
+
+1. In the Properties for matmult windows, under *C/C++ Build* select `Settings`, then make sure you select `[All configurations]`
+
+1. Under *AIE C Compiler* select *Miscellaneous* and set the `Stack Size` to 2048
+
+   ![Increase Stack Size](images/matmult_lab/aie_increase_stack_size.png)
+
+1. Click *Apply and Close*
+
+1. Compile AIE code
 
 ---------------------------------------
 <p align="center">Copyright&copy; 2023 Advanced Micro Devices</p>

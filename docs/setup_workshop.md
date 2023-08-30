@@ -2,9 +2,9 @@
 layout: default
 ---
 
-# Instructor-led XUP tutorial: Connecting to AWS
+# Instructor-led AUP tutorial: Connecting to AWS
 
-The following instructions are for live, instructor-led XUP tutorials where AWS EC2 instances have been set by AMD and login details have been provided to attendees. You can check the [AMD XUP workshop schedule]https://www.xilinx.com/support/university/workshops.html) for upcoming training. Ask your instructor if you do not have your login details. If you are **not** attending a live XUP tutorial, go back to the [Quick Start](README.md) page and follow one of the other options to work through these labs.
+The following instructions are for live, instructor-led AUP tutorials where AWS EC2 instances have been set by AMD and login details have been provided to attendees. You can check the [AMD AUP workshop schedule]https://www.xilinx.com/support/university/workshops.html) for upcoming training. Ask your instructor if you do not have your login details. If you are **not** attending a live AUP tutorial, go back to the [Quick Start](README.md) page and follow one of the other options to work through these labs.
 
 ## Introduction
 
