@@ -31,7 +31,6 @@ void tile_matrix(ap_int<data_width> *mem, hls::stream<ap_axiu<data_width, 0, 0, 
                     unsigned index = (i * tile_rows + ti) * cols + j * tile_cols + tj;
 
                     data x { mem[index] };
-                    x.keep_all();
                     stream.write(x);
                 }
             }
