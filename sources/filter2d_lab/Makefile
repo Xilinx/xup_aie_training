@@ -8,7 +8,6 @@ TARGET := hw
 XSA = $(strip $(patsubst %.xpfm, % , $(shell basename $(PLATFORM))))
 AIE_DIR = $(shell readlink -f ./aie)
 PL_DIR = $(shell readlink -f ./pl)
-PS_DIR = $(shell readlink -f ./ps)
 HOST_DIR = $(shell readlink -f ./host)
 HW_LINK = $(shell readlink -f ./hw_link/config.cfg)
 VIDEOLIB_ROOT = $(shell readlink -f ../Vitis_Libraries/vision/)
@@ -42,18 +41,14 @@ AIE_SRCS = $(AIE_DIR)/$(BUILD_DIR)/libadf.a
 XO_SRCS = $(VIDEOLIB_ROOT)/L1/lib/hw/8_16/stitcher.xo
 XO_SRCS += $(VIDEOLIB_ROOT)/L1/lib/hw/8_16/tiler.xo
 HOST_APP = $(HOST_DIR)/filter2d.exe
-PS_TARGET = $(PS_DIR)/ps_kernel.so
 
-all: $(OUTPUT_DIR)/${XCLBIN_NAME}.xclbin $(HOST_APP) $(OUTPUT_DIR)/${XCLBIN_NAME}_ps_kernel.xclbin
+all: $(OUTPUT_DIR)/${XCLBIN_NAME}.xclbin $(HOST_APP)
 
 $(AIE_SRCS):
 	make -C $(AIE_DIR)/ PLATFORM=$(PLATFORM) FREQ=$(FREQ) TARGET=$(TARGET)
 
 $(HOST_APP):
 	make -C $(HOST_DIR)
-
-$(PS_TARGET):
-	make -C $(PS_DIR)/
 
 # Building xsa
 $(OUTPUT_DIR)/$(XCLBIN_NAME).xsa: $(AIE_SRCS) $(XO_SRCS)
@@ -80,9 +75,6 @@ $(OUTPUT_DIR)/${XCLBIN_NAME}.xclbin: $(OUTPUT_DIR)/${XCLBIN_NAME}.xsa
 	  --package.boot_mode=ospi \
 	  -o $@ 2>&1 | tee $(XCLBIN_NAME)_xclbin.log
 	@echo "### ***** $(XCLBIN_NAME).xclbin packaging done! *****"
-
-$(OUTPUT_DIR)/${XCLBIN_NAME}_ps_kernel.xclbin: $(OUTPUT_DIR)/${XCLBIN_NAME}.xclbin $(PS_TARGET)
-	xclbinutil --add-pskernel $(PS_TARGET) --input $< --output $@ --force
 
 clean:
 	rm -rf *.log *.jou .Xil/
