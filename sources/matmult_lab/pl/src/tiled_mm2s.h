@@ -17,12 +17,12 @@ namespace {
  * Both input matrix and output blocks are represented in row-major order.
  */
 template <unsigned rows, unsigned cols, unsigned tile_rows, unsigned tile_cols, unsigned data_width>
-void tile_matrix(ap_int<data_width> *mem, hls::stream<qdma_axis<data_width, 0, 0, 0>> &stream)
+void tile_matrix(ap_int<data_width> *mem, hls::stream<ap_axiu<data_width, 0, 0, 0>> &stream)
 {
     constexpr unsigned I = rows / tile_rows;
     constexpr unsigned J = cols / tile_cols;
 
-    using data = qdma_axis<data_width, 0, 0, 0>;
+    using data = ap_axiu<data_width, 0, 0, 0>;
 
     for (unsigned i = 0; i < I; ++i) {
         for (unsigned j = 0; j < J; ++j) {
@@ -45,7 +45,7 @@ void tile_matrix(ap_int<data_width> *mem, hls::stream<qdma_axis<data_width, 0, 0
  * matrix's element.
  */
 template <unsigned rows, unsigned cols, unsigned tile_rows, unsigned tile_cols, unsigned data_width>
-void mm2s_tiled(ap_int<data_width> *mem, hls::stream<qdma_axis<data_width, 0, 0, 0>> &s, int size_bytes)
+void mm2s_tiled(ap_int<data_width> *mem, hls::stream<ap_axiu<data_width, 0, 0, 0>> &s, int size_bytes)
 {
     constexpr unsigned element_size = data_width / CHAR_BIT;
     constexpr unsigned matrix_size  = rows * cols;
