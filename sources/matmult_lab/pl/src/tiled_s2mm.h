@@ -31,7 +31,7 @@ void untile_matrix(ap_int<data_width> *mem, hls::stream<ap_axiu<data_width, 0, 0
                     unsigned index = (i * tile_rows + ti) * cols + j * tile_cols + tj;
 
                     data x     = stream.read();
-                    mem[index] = x.get_data();
+                    mem[index] = x.data;
                 }
             }
         }
