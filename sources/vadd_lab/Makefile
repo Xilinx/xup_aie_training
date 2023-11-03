@@ -9,7 +9,7 @@ XSA = $(strip $(patsubst %.xpfm, % , $(shell basename $(PLATFORM))))
 AIE_DIR = $(shell readlink -f ./aie)
 PL_DIR = $(shell readlink -f ./pl)
 HOST_DIR = $(shell readlink -f ./host)
-HW_LINK = $(shell readlink -f ./hw_link/config.cfg)
+HW_LINK = $(shell readlink -f ./pl/.config.cfg)
 
 XCLBIN_NAME = vadd
 JOBS = 16
