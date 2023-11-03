@@ -28,7 +28,7 @@ In this lab, you will add four different AIE kernels, each of them supporting a 
 
 1. In the Vitis GUI create a new application project
 
-   * Platform: xilinx_vck5000_gen4x8_xdma_2_202210_1
+   * Platform: xilinx_vck5000_gen4x8_qdma_2_202220_1
    * Name: matmult
    * Processor: ai_engine
    * Domain: aie_domain

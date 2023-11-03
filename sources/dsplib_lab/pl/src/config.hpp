@@ -7,4 +7,4 @@
 #include <ap_axi_sdata.h>
 
 #define DWIDTH 128
-typedef qdma_axis<DWIDTH, 0, 0, 0> data;
+typedef ap_axiu<DWIDTH, 0, 0, 0> data;

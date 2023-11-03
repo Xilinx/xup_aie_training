@@ -74,7 +74,7 @@ Follow these steps to get the source code for this tutorial, [Get Source Code](s
 
    ![](images/vadd_lab/vitis_new_app_project_wizard.png)
 
-1. Select `xilinx_vck5000_gen4x8_xdma_2_202210_1` platform and click *Next >*
+1. Select `xilinx_vck5000_gen4x8_qdma_2_202220_1` platform and click *Next >*
 
    If you do not see this platform, check you followed the lab set up instructions to set the `PLATFORM_REPO_PATHS` variable.
 
@@ -236,6 +236,8 @@ The following assignments are optional, however they will help deepen your knowl
 1. Change the plio bitwidth in the `input_plio::create()` to either `plio_64_bits` or `plio_128_bits`. What changes do you notice? Is it necessary to make any other changes?
 
    Note that the text files used as stimuli need to be regenerated to match the plio bitwidth, the `write_file` function on the Python file supports this
+
+1. 
 
 If you are attending an in-person tutorial, you can request support from your instructor. Otherwise, open a [GitHub issue](https://github.com/Xilinx/xup_aie_training/issues/new/choose)
 

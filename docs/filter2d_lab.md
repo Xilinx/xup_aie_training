@@ -52,7 +52,7 @@ After completing this lab, you will learn to
 
 1. In the Vitis GUI create a new application project
 
-   * Platform: xilinx_vck5000_gen4x8_xdma_2_202210_1
+   * Platform: xilinx_vck5000_gen4x8_qdma_2_202220_1
    * Name: filter2d
    * Processor: ai_engine
    * Domain: ai_engine

@@ -8,7 +8,7 @@ This version of the tutorial has been verified for the following environments
 
 | Environment  | Vitis   |    XRT   | Shell | Notes |
 |--------------|---------|----------|-------|-------|
-| AWS EC2      | 2022.2  | 2.14.354 | xilinx_vck5000_gen4x8_xdma_2_202210_1| No VCK5000 is available |
+| AWS EC2      | 2022.2  | 2.14.354 | xilinx_vck5000_gen4x8_qdma_2_202220_1| No VCK5000 is available |
 
 ## Report an Issue
 

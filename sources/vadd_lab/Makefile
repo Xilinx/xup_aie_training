@@ -9,11 +9,10 @@ XSA = $(strip $(patsubst %.xpfm, % , $(shell basename $(PLATFORM))))
 AIE_DIR = $(shell readlink -f ./aie)
 PL_DIR = $(shell readlink -f ./pl)
 HOST_DIR = $(shell readlink -f ./host)
-HW_LINK = $(shell readlink -f ./hw_link/config.cfg)
+HW_LINK = $(shell readlink -f ./pl/.config.cfg)
 
-XCLBIN_NAME = template
+XCLBIN_NAME = vadd
 JOBS = 16
-
 ifeq (gen4x8,$(findstring gen4x8, $(XSA)))
 	FREQ = 300
 else
@@ -37,8 +36,9 @@ BUILD_DIR = build.$(TARGET)
 OUTPUT_DIR = $(shell readlink -f ./$(BUILD_DIR))
 
 AIE_SRCS = $(AIE_DIR)/$(BUILD_DIR)/libadf.a
-XO_SRCS = $(PL_DIR)/$(BUILD_DIR)/*.xo
-HOST_APP = $(HOST_DIR)/template.exe
+XO_SRCS = $(PL_DIR)/$(BUILD_DIR)/pl_mm2s.xo
+XO_SRCS += $(PL_DIR)/$(BUILD_DIR)/pl_s2mm.xo
+HOST_APP = $(HOST_DIR)/$(XCLBIN_NAME).exe
 
 all: $(OUTPUT_DIR)/${XCLBIN_NAME}.xclbin $(HOST_APP)
 
@@ -54,6 +54,7 @@ $(HOST_APP):
 # Building xsa
 $(OUTPUT_DIR)/$(XCLBIN_NAME).xsa: $(AIE_SRCS) $(XO_SRCS)
 	@echo "### ***** linking pl kernels into $(XCLBIN_NAME).xsa ... *****"
+	sed -i 's/\#nk/nk/' $(HW_LINK);\
 	mkdir -p $(OUTPUT_DIR); \
 	cd $(OUTPUT_DIR); \
 	v++ -l $(VPP_FLAGS) \
@@ -76,6 +77,7 @@ $(OUTPUT_DIR)/${XCLBIN_NAME}.xclbin: $(OUTPUT_DIR)/${XCLBIN_NAME}.xsa
 	  --package.boot_mode=ospi \
 	  -o $@ 2>&1 | tee $(XCLBIN_NAME)_xclbin.log
 	@echo "### ***** $(XCLBIN_NAME).xclbin packaging done! *****"
+	git checkout $(HW_LINK)
 
 clean:
 	rm -rf *.log *.jou .Xil/

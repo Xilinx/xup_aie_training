@@ -11,7 +11,7 @@ INCLUDES +=	-I$(XILINX_VITIS)/aietools/include
 INCLUDES +=	-I$(XILINX_VITIS)/include
 INCLUDES +=	-I$(XILINX_XRT)/include
 
-LIBS := -lxaiengine -ladf_api_xrt -lxrt_core -lxrt_coreutil -luuid -lgcc -lc
+LIBS := -lxaiengine -ladf_api_xrt -lxrt_core -lxrt_coreutil -lgcc -lc
 LIBS += -lxilinxopencl -lpthread -lrt -ldl -lcrypt -lstdc++ -lOpenCL
 LIBS += -Wno-unused-label -Wno-narrowing -DVERBOSE
 LIBS += -L$(XILINX_VITIS)/aietools/lib/lnx64.o
@@ -21,7 +21,7 @@ LIBS += -L$(XILINX_XRT)/lib/
 # BUILD PRODUCTS
 # =========================================================
 BUILD_DIR = build
-EXECUTABLE = matmult.exe
+EXECUTABLE = vadd.exe
 # ################ TARGET: make all ################
 all: host
 

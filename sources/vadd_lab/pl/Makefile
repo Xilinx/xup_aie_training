@@ -12,11 +12,13 @@ BUILD_DIR = build.$(TARGET)
 VPP_FLAGS = -t $(TARGET) --platform $(PLATFORM)# --save-temps
 VPP_FLAGS += --kernel_frequency $(FREQ)
 
-TARGETS = mm2s s2mm mm2s_i32_a mm2s_i32_b s2mm_i32 mm2s_i16_a mm2s_i8_b s2mm_i8
-all: $(addprefix $(BUILD_DIR)/, $(addsuffix .xo,$(TARGETS)))
+all: $(BUILD_DIR)/pl_mm2s.xo $(BUILD_DIR)/pl_s2mm.xo
 
-$(BUILD_DIR)/%.xo: src/%.cpp
-	v++ $(VPP_FLAGS) -k $* -c -g -o $@ $^
+$(BUILD_DIR)/pl_mm2s.xo: pl_mm2s.cpp
+	v++ $(VPP_FLAGS) -k $(subst $(BUILD_DIR)/,,$(subst .xo,,$@)) -c -g -o $@ $^
+
+$(BUILD_DIR)/pl_s2mm.xo: pl_s2mm.cpp
+	v++ $(VPP_FLAGS) -k $(subst $(BUILD_DIR)/,,$(subst .xo,,$@)) -c -g -o $@ $^
 
 clean:
 	rm -rf $(BUILD_DIR) *.log *.jou .Xil/

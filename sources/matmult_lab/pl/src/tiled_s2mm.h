@@ -17,12 +17,12 @@ namespace {
  * Both input blocks and output matrix are represented in row-major order.
  */
 template <unsigned rows, unsigned cols, unsigned tile_rows, unsigned tile_cols, unsigned data_width>
-void untile_matrix(ap_int<data_width> *mem, hls::stream<qdma_axis<data_width, 0, 0, 0>> &stream)
+void untile_matrix(ap_int<data_width> *mem, hls::stream<ap_axiu<data_width, 0, 0, 0>> &stream)
 {
     constexpr unsigned I = rows / tile_rows;
     constexpr unsigned J = cols / tile_cols;
 
-    using data = qdma_axis<data_width, 0, 0, 0>;
+    using data = ap_axiu<data_width, 0, 0, 0>;
 
     for (unsigned i = 0; i < I; ++i) {
         for (unsigned j = 0; j < J; ++j) {
@@ -31,7 +31,7 @@ void untile_matrix(ap_int<data_width> *mem, hls::stream<qdma_axis<data_width, 0,
                     unsigned index = (i * tile_rows + ti) * cols + j * tile_cols + tj;
 
                     data x     = stream.read();
-                    mem[index] = x.get_data();
+                    mem[index] = x.data;
                 }
             }
         }
@@ -44,7 +44,7 @@ void untile_matrix(ap_int<data_width> *mem, hls::stream<qdma_axis<data_width, 0,
  * matrix's element.
  */
 template <unsigned rows, unsigned cols, unsigned tile_rows, unsigned tile_cols, unsigned data_width>
-void s2mm_tiled(ap_int<data_width> *mem, hls::stream<qdma_axis<data_width, 0, 0, 0>> &s, int size_bytes)
+void s2mm_tiled(ap_int<data_width> *mem, hls::stream<ap_axiu<data_width, 0, 0, 0>> &s, int size_bytes)
 {
     constexpr unsigned element_size = data_width / CHAR_BIT;
     constexpr unsigned matrix_size  = rows * cols;
