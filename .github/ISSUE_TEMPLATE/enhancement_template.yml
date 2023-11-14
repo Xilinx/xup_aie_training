@@ -2,8 +2,7 @@ name: Enhancement Request
 description: File an issue for an enhancement request
 title: "[Enhancement]: "
 labels: ["enhancement"]
-assignees:
-  - mariodruiz
+assignees: [mariodruiz, vickyiii]
 body:
   - type: markdown
     attributes:
@@ -26,6 +25,8 @@ body:
         - Vector Add 2
         - Matrix Mult
         - DSPLib
+        - Fir_Lowpass
+        - Fir_Interconnect
         - All of the above
     validations:
       required: true

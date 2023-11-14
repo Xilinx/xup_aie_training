@@ -23,6 +23,8 @@ body:
         - Vector Add
         - Matrix Mult
         - DSPLib
+        - Fir_Interconnect
+        - Fir_Lowpass
     validations:
       required: true
   - type: textarea

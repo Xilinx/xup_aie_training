@@ -2,8 +2,7 @@ name: Issue Report
 description: File an issue report
 title: "[Issue]: "
 labels: ["Issue"]
-assignees:
-  - mariodruiz
+assignees: [mariodruiz, vickyiii]
 body:
   - type: markdown
     attributes:
@@ -26,6 +25,8 @@ body:
         - Vector Add 2
         - Matrix Mult
         - DSPLib
+        - Fir_Lowpass
+        - Fir_Interconnect
     validations:
       required: true
   - type: textarea
