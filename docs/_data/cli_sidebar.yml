@@ -1,0 +1,7 @@
+docs_list_title: cli_sidebar
+docs:
+  - title: Vector Add
+    url: vadd_lab_cli.html
+  
+  - title: DSPLib Lab
+    url: dsplib_lab.html

@@ -8,6 +8,3 @@ docs:
 
   - title: Matrix Mult lab
     url: matmult_lab.html
-
-  - title: DSPLib Lab
-    url: dsplib_lab.html
