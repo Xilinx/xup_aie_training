@@ -57,10 +57,12 @@ $(BUILD_DIR)/libadf.a: $(DEPS)
 clean:
 	rm -rf $(BUILD_DIR) *.log *.jou
 
-aieemu:
-	cd $(BUILD_DIR); \
-	aiesimulator --pkg-dir=$(WORK_DIR) --i=.. --profile --dump-vcd=foo
-
-x86sim:
-	cd $(BUILD_DIR); \
-	x86simulator --pkg-dir=$(WORK_DIR) --i=..
+sim:
+	@if [ $(TARGET) = "x86sim" ]; then\
+    	cd $(BUILD_DIR); \
+		x86simulator --pkg-dir=$(WORK_DIR) --i=.. ;\
+	fi
+	@if [ $(TARGET) = "hw" ]; then\
+		cd $(BUILD_DIR); \
+		aiesimulator --pkg-dir=$(WORK_DIR) --i=.. --profile --dump-vcd=foo ; \
+	fi
