@@ -74,7 +74,7 @@ We are going to compile the AI Engine kernel and run software emulation to verif
 1. Run the compilation, in the CLI run:
 
    ```sh
-   make sim TARGET=x86sim
+   make TARGET=x86sim
    ```
 
    Learn more about the `aiecompiler` options [here](https://docs.xilinx.com/r/en-US/ug1076-ai-engine-environment/AI-Engine-Compiler-Options)
