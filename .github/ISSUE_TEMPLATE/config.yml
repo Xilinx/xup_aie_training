@@ -1,4 +1,4 @@
-blank_issues_enabled: false
+blank_issues_enabled: true
 contact_links:
   - name: Versal ACAP Design Process Documentation
     url: https://www.xilinx.com/support/documentation-navigation/design-process/ai-engine-development.html
