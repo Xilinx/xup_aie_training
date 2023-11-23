@@ -1,0 +1,7 @@
+docs_list_title: pbl_sidebar
+docs:
+  - title: Single Kernel
+    url: fir_single_kernel.html
+  
+  - title: Multi Kernel
+    url: fir_multi_kernel.html
