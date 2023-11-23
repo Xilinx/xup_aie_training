@@ -27,9 +27,9 @@ This lab guides you through the steps involved in creating single FIR kernel usi
 
 | lab | Interface   |  Connection   | Placement| DataType | Samples |
 |--------|---------|----------|--------------|--------|--------|
-|  fir_stream_memory | Stream or Memory Interface | /  |/| int16 | 1024 |
-|  fir_m2m | Memory | Shared Memory Using Memory Interface  | neighbor |int16 | 1024 |
-|  fir_cascade | Stream | AXI4-Stream Interconnect Using Cascade Stream Interface |neighbor | int16 | 1024 |
+|  [fir_stream_memory](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_multi_kernel/fir_interconnect/fir_stream_memory/notebook/fir_s_m.ipynb) | Stream or Memory Interface | /  |/| int16 | 1024 |
+|  [fir_m2m](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_multi_kernel/fir_interconnect/fir_m2m/notebook/fir_m2m.ipynb) | Memory | Shared Memory Using Memory Interface  | neighbor |int16 | 1024 |
+|  [fir_cascade](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_multi_kernel/fir_interconnect/fir_cascade/notebook/fir_cascade.ipynb) | Stream | AXI4-Stream Interconnect Using Cascade Stream Interface |neighbor | int16 | 1024 |
 
 ## Steps
 
@@ -38,72 +38,84 @@ This lab will use Makefile files to automate the building process.
 ### step 1: Build the AIE Component and Run the AIE Emulation
 
 1. Navigate to the AIE folder and run make all to build the HLS kernel project
-```
-   cd $HOME/fir_stream_memory/prj/aie
+
+   ```sh
+   cd $HOME/xup_aie_training/pbl/fir_stream_memory/prj/aie
    make all
-```
+   ```
+
 2. Run the AIE Emulation
-```
+
+   ```sh
    make aieemu
-```
+   ```
+
 3. Analyze the AIE Emulation and compilation results
-```
+
+   ```sh
    make analyzer
-```
+   ```
+
 4. Get the AIE Emulation result
-```
+
+   ```sh
    make get_output
-```
-The output files can be found here:
-```
-   $HOME/fir_stream_memory/prj/aie/data/output_aie.txt
-```
+   ```
+
+   The output files can be found here: `$HOME/xup_aie_training/pbl/fir_stream_memory/prj/aie/data/output_aie.txt`
+
 ### Step 2: Run the FIR Application in the Juypter Notebook
 
-1. Navigate to the notebook folder and  run the mean filter application to validate the AIE Emulation result.
-```
-   cd $HOME/fir_stream_memory/notebook/
-   Run all
-```
+1. Navigate to the notebook folder and run the mean filter application to validate the AIE Emulation result.
+
+   ```sh
+   code $HOME/xup_aie_training/pbl/fir_stream_memory/notebook/
+   ```
+
+   Run all the cells
+
 ### Step 3: Build the Whole Application for Hardware Run (optional)
 
 1. Build for hardware targets and generate the FPGA binary (.xclbin file) and host executable, which includes build the PL kernels and integrate the PL kernels and AIE kernels together in the VCK5000 platform. 
 
-- Note:This step can take a couple of hours, or more significant time depending on the design complexity, the machine you are building on, and its current workload.
-```
-   cd $HOME/fir_stream_memory/prj
+   ```sh
+   cd $HOME/xup_aie_training/pbl/fir_stream_memory/prj
    make all
-```        
+   ```
+
+   - Note:This step can take a couple of hours, or more significant time depending on the design complexity, the machine you are building on, and its current workload.
+
 2. Run the application on a system with the AMD VCK5000 card using the following command
-```
-   cd $HOME/fir_stream_memory/prj/host
+
+   ```sh
+   cd $HOME/xup_aie_training/pbl/fir_stream_memory/prj/host
    ./fir_s_m.exe ../build.hw/fir_s_m.xclbin
-```
+   ```
 
-3. Get the hardware output file
+3. Check the hardware output file
 
-```
-   $HOME/fir_stream_memory/prj/host/output.txt
-```
+   ```terminal
+   $HOME/xup_aie_training/pbl/fir_stream_memory/prj/host/output.txt
+   ```
 
-## Review and Firmly Grasp the Key Concepts
+## Review and Understand Key Concepts
 
 ### AI Engine Stream and Memory Interface
 
 ### 1. Stream Interface
 
-The streaming interface is based on two incoming streams and two outgoing streams, each one on 32 bits per clock cycle. These four streams are handled by a stream FIFO that allows the processor to use different bitwidths to access these streams:
+The streaming interface is based on two incoming streams and two outgoing streams, each one on 32 bits per clock cycle. These four streams are handled by a stream FIFO that allows the processor to use different bit widths to access these streams:
 
 - 2 streams in, 2 streams out:
-    - Each one 4 bytes/cycle or 16 bytes/ 4 cycles
+  - Each one 4 bytes/cycle or 16 bytes/ 4 cycles
 - Parallel access to streams per VLIW:
-    - 2 reads (4/16 bytes), 1 write (4/16 bytes)
-    - OR 1 read (4/16 bytes), 2 writes (4/16 bytes)
+  - 2 reads (4/16 bytes), 1 write (4/16 bytes)
+  - OR 1 read (4/16 bytes), 2 writes (4/16 bytes)
 - Using 1 stream:
-    - 4 bytes/cycle read and 4 bytes/cycle write
+  - 4 bytes/cycle read and 4 bytes/cycle write
 - Using the 2 streams and the 16-byte access option:
-    - Reads and/or writes can be dispatched over time
-    - On an average 8 bytes/cycle read and 8 bytes/cycle write
+  - Reads and/or writes can be dispatched over time
+  - On an average 8 bytes/cycle read and 8 bytes/cycle write
 
 Accessing the data to/from the streams using the 128-bit interface does not increase the bandwidth, but limits the number of accesses that must be scheduled within the microcode of the VLIW processor.
 
@@ -114,9 +126,9 @@ Accessing the data to/from the streams using the 128-bit interface does not incr
 Each AI Engine is surrounded by 4x 32 kB data memories, each one being divided in four pairs of banks. The bandwidth is high:
 
 - 2 reads / cycle on 32 bytes (256 bits) each
-    - Each bank has a single port, the accesses must be done on different banks to achieve 2x 256 bits/cycle.
+  - Each bank has a single port, the accesses must be done on different banks to achieve 2x 256 bits/cycle.
 - 1 write / cycle on 32 bytes (256 bits)
-    - On another bank to achieve the highest bandwidth.
+  - On another bank to achieve the highest bandwidth.
 
 - Be aware that you need also to feed the memories using DMAs or other AI Engines.
 
@@ -136,21 +148,20 @@ If the transfer concerns a 768-bit register, it takes 2 clock cycles.
 
 1. Stream
 
-Each stream is a 32-bit input and 32-bit output interface and has a throughput of 32 Gbps (2 streams per AI Engine core). Stream can be accessed with a 32-bit write/reads or a 128-bit write/reads every 4 cycles. One of the biggest advantage of streams is a flexibility in routing, where data can be streamed to multiple cores at the same time. In addition, streams do not require extensive buffering, as a result stream designs offer much reduced latency. 
+Each stream is a 32-bit input and 32-bit output interface and has a throughput of 32 Gb/s (2 streams per AI Engine core). Stream can be accessed with a 32-bit write/reads or a 128-bit write/reads every 4 cycles. One of the biggest advantage of streams is a flexibility in routing, where data can be streamed to multiple cores at the same time. In addition, streams do not require extensive buffering, as a result stream designs offer much reduced latency.
 
 2. Memory
 
-Memory input is a 256-bit interface to one of the surrounding memory banks - with a potential input bandwidth: 256 Gbps. Maximum bandwidth is higher than the stream Interface, but memory needs to be fed with data coming from other cores or a PL.There's potential memory conflict hazards when 2 neighboring cores try to access same memory bank. 
+Memory input is a 256-bit interface to one of the surrounding memory banks - with a potential input bandwidth: 256 Gb/s. Maximum bandwidth is higher than the stream Interface, but memory needs to be fed with data coming from other cores or a PL.There's potential memory conflict hazards when 2 neighboring cores try to access same memory bank.
 
-Memory module offers 32kB of storage per AI Engine core tile. Although, AIE tiles can access neighboring memory Modules, its size needs to be taken into account while defining the architecture, e.g. if a single AI Core fully utilizes all its available memory - 128 kB, neighboring tiles may essentially be rendered unusable with no storage available for data and/or stack. 
+Memory module offers 32kB of storage per AI Engine core tile. Although, AIE tiles can access neighboring memory Modules, its size needs to be taken into account while defining the architecture, e.g. if a single AI Core fully utilizes all its available memory - 128 kB, neighboring tiles may essentially be rendered unusable with no storage available for data and/or stack.
 
-Memory interface requires data synchronization through ping-pong buffers, where part of the buffer is being operated on while other part is being fed with new data. This doubles the requirement for data storage.In addition, memory Module interface is only connected to neighboring cores, which limits accessibility to data from multiple cores. 
+Memory interface requires data synchronization through ping-pong buffers, where part of the buffer is being operated on while other part is being fed with new data. This doubles the requirement for data storage.In addition, memory Module interface is only connected to neighboring cores, which limits accessibility to data from multiple cores.
 
 3. Consideration
 
 The mechanism of data access is the most critical aspect in whether to use the memory interface or the stream interface.
 For memory interface，the kernel can perform random access within a buffer of data and there is the ability to specify a margin for algorithms that require some number of bytes from the previous buffer. For stream interface, it is used for continuous data and using blocking or non-blocking calls to read and write in a sample-by-sample fashion.
-
 
 ## AI Engine Data Movement Architecture
 
@@ -176,7 +187,7 @@ The synchronization of the ping-pong buffers in each memory module is carried ou
 
 ### 3. AIE to AIE Data Communication via AXI4-Stream Interconnect Using Memory and Stream Interface
 
-Another non-neighbor communication scheme which we call the Streaming Multicast. This is used a lot in machine learning with the same data can be sent to multiple cores all over the array as needed and compute can happen in parallel. AI Engines can directly communicate through the AXI4-Stream interconnect without any DMA or memory interaction. 
+Another non-neighbor communication scheme which we call the Streaming Multicast. This is used a lot in machine learning with the same data can be sent to multiple cores all over the array as needed and compute can happen in parallel. AI Engines can directly communicate through the AXI4-Stream interconnect without any DMA or memory interaction.
 
 <img src="./images/pbl/stream_inter.png" alt="Stream Image" width="500" height="280">
 
@@ -199,9 +210,11 @@ run-time ratio = (cycles for one run of the kernel)/(cycle budget)
 The cycle budget is the number of instruction cycles a kernel can take to either consume data from its input (when dealing with a rate limited input data stream), or to produce a block of data on its output (when dealing with a rate limited output data stream).
 
 It is defined by the following equation:
+
 ```
 Cycle Budget = Block Size * (AI Engine Clock Frequency/Sample Frequency)
 ```
+
 For example, take a kernel which processes a window of 128 samples and the input samples frequency (for example from an ADC) is 245.76MHz. The cycle budget is 128*(1000/245.76) = 520 cycles.
 
 This means that with the AI Engine Array running at 1GHz, the kernel needs to be executed in less than 520 AI Engine clock cycles (because the next input window would be ready after 520 clock cycles).
@@ -214,5 +227,3 @@ This means that with the AI Engine Array running at 1GHz, the kernel needs to be
 
 ---------------------------------------
 <p align="center">Copyright&copy; 2023 Advanced Micro Devices</p>
-
-
