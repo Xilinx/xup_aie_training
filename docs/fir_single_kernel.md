@@ -8,16 +8,47 @@ This lab provides the entire process of designing a low-pass filter using Python
 The tutorial is divided into three parts. The first part shows the whole process of designing a low-pass filter and verifying it using Python.
 The second part focus on the Single Kernel Programming using the AIE APIs to achieve the highest performance on the AI Engine. The primary goal of single kernel programming is to ensure the use of the vector processor approaches its theoretical maximum. Vectorization of the algorithm is important, but managing the vector registers, memory access, and software pipelining are also required. The third part goes through the steps on creating the ADF graph and analyze the performance. The following table shows the key content of the three parts of the tutorial.
 
-|PART  | TOPIC   |  SPECIFICATION   |
-|--------|:---------:|:----------|
-| 1 | [Software implementation](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_single_kernel/fir_lowpass/notebook/fir_lowpass1.ipynb) | Demonstrate the software implementation of the application |
-|   |                         |Using python language and the powerful extensible library |
-|   |                          |Generate the input data and golden file for the AIE |
-| 2 | [Single Kernel Programming](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_single_kernel/fir_lowpass/notebook/fir_lowpass2.ipynb) | Design the FIR single kernel in AIE |
-|   |                           |Analyze and optimize the read and write efficiency of ports |
-| 3 | [Graph Programming and Performance Analysis](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_single_kernel/fir_lowpass/notebook/fir_lowpass3.ipynb) | Create the kernel Graph and the test bench |
-|   |                           |Compare with AIE HW Emulation result with the SW result  |
-|   |   |Analyze performance and accuracy |
+<table border="2">
+<thead>
+  <tr>
+    <th>Part</th>
+    <th>Topic</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="3">1</td>
+    <td rowspan="3"><a href="https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_single_kernel/fir_lowpass/notebook/fir_lowpass1.ipynb">Software implementation</a></td>
+    <td>Demonstrate the software implementation of the application</td>
+  </tr>
+  <tr>
+    <td>Using Python and its powerful extensible library</td>
+  </tr>
+  <tr>
+    <td>Generate the input data and golden file for the AIE</td>
+  </tr>
+  <tr>
+    <td rowspan="2">2</td>
+    <td rowspan="2"><a href="https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_single_kernel/fir_lowpass/notebook/fir_lowpass2.ipynb">Single Kernel Programming</a></td>
+    <td>Design the FIR single kernel in AIE</td>
+  </tr>
+  <tr>
+    <td>Analyze and optimize the read and write efficiency of ports</td>
+  </tr>
+  <tr>
+    <td rowspan="3">3</td>
+    <td rowspan="3"><a href="https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_single_kernel/fir_lowpass/notebook/fir_lowpass3.ipynb">Graph Programming and Performance Analysis</a></td>
+    <td>Create the kernel Graph and the test bench</td>
+  </tr>
+  <tr>
+    <td>Compare with AIE HW Emulation result with the SW result</td>
+  </tr>
+  <tr>
+    <td>Analyze performance and accuracy</td>
+  </tr>
+</tbody>
+</table>
 
 <summary>Single Kernel Programming Design Flow In Part 2</summary>
 
