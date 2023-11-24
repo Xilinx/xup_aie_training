@@ -10,12 +10,6 @@
 
 #define STREAM
 
-#ifdef STREAM
-#define CONNECTION stream
-#else
-#define CONNECTION window<2048 * sizeof(int)>
-#endif
-
 using namespace adf;
 
 class simpleGraph : public graph {
@@ -42,9 +36,15 @@ class simpleGraph : public graph {
             p_s2 = output_plio::create("StreamOut0", plio_32_bits, "output.txt");
 
             //connect ports and kernel
-            connect<CONNECTION>(p_s0.out[0], vadd.in[0]);
-            connect<CONNECTION>(p_s1.out[0], vadd.in[1]);
-            connect<CONNECTION>(vadd.out[0], p_s2.in[0]);
+            connect(p_s0.out[0], vadd.in[0]);
+            connect(p_s1.out[0], vadd.in[1]);
+            connect(vadd.out[0], p_s2.in[0]);
+
+#ifndef STREAM
+            adf::dimensions(vadd.in[0]) = {2048};
+            adf::dimensions(vadd.in[1]) = {2048};
+            adf::dimensions(vadd.out[0]) = {2048};
+#endif
 
             // Define kernel runtime ratio
             runtime<ratio>(vadd) = 1;
