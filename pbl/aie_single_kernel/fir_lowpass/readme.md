@@ -44,45 +44,36 @@ graph TD
 
 - Note: A basic understanding of FIR filters, C language, and the Xilinx® Vitis™ tools is assumed.
 
-## Steps：
+## Steps
 
-### Part 1:
+### Part 1
 
-Jupyter lab on Windows system:
+Run the Software implementation in Jupyter lab on Windows or Linux system
 
-1. Install the Jupyter Lab and
-   ```
-   pip install jupyterlab
-   ```
-2. Set up the Python environment with the necessary packages
-   ```
-   cd $HOME\pbl\common
-   pip install -r requirements.txt
-   ```
-3. Open the Jupyter Notebook
+1. Open the Jupyter Notebook: fir_lowpass1
    ```
    cd $HOME\pbl\aie_single_kernel\fir_lowpass\notebook> py -m jupyter lab
    ```
-4. Run the notebooks in Jupyter lab
-5. Review Download the input and output reference data file in the following path
+2. Run the notebooks in Jupyter lab
+3. Review Download the input and output reference data file in the following path
    ```
    $HOME\pbl\aie_single_kernel\fir_lowpass\aie\data\
    ```
 
-### Part 2:
+### Part 2
 
 The project will use Makefile files to automate the building process in Vitis.
 
-Step 1: Build the AIE Component and Run the AIE Emulation
+1. Build the AIE Component and Run the AIE Emulation
 
-1. Navigate to the AIE folder and run make all to build the HLS kernel project
+Navigate to the AIE folder and run make all to build the HLS kernel project
 
 ```
    cd $HOME/fir_stream_memory/prj/aie
    make all
 ```
 
-2. Run the AIE Emulation
+1. Run the AIE Emulation
 
 ```
    make aieemu
@@ -94,7 +85,7 @@ Step 1: Build the AIE Component and Run the AIE Emulation
    make analyzer
 ```
 
-4. Get the AIE Emulation result
+1. CHeck the AIE Emulation result
 
 ```
    make get_output
@@ -106,18 +97,9 @@ The output files can be found here:
    $HOME/fir_stream_memory/prj/aie/data/output_aie.txt
 ```
 
-Step 2: Run the FIR Application in the Juypter Notebook
+5. Build the Whole Application for Hardware Run (optional)
 
-1. Navigate to the notebook folder and  run the mean filter application to validate the AIE Emulation result.
-
-```
-   cd $HOME/fir_stream_memory/notebook/
-   Run all
-```
-
-Step 3: Build the Whole Application for Hardware Run (optional)
-
-1. Build for hardware targets and generate the FPGA binary (.xclbin file) and host executable, which includes build the PL kernels and integrate the PL kernels and AIE kernels together in the VCK5000 platform.
+Build for hardware targets and generate the FPGA binary (.xclbin file) and host executable, which includes build the PL kernels and integrate the PL kernels and AIE kernels together in the VCK5000 platform.
 
 - Note:This step can take a couple of hours, or more significant time depending on the design complexity, the machine you are building on, and its current workload.
 
@@ -126,25 +108,28 @@ Step 3: Build the Whole Application for Hardware Run (optional)
    make all
 ```
 
-2. Run the application on a system with the AMD VCK5000 card using the following command
+6. Run the application on a system with the AMD VCK5000 card using the following command (optional)
 
 ```
    cd $HOME/fir_stream_memory/prj/host
    ./fir_s_m.exe ../build.hw/fir_s_m.xclbin
 ```
 
-3. Get the hardware output file
+1. Check the hardware output file (optional)
 
 ```
    $HOME/fir_stream_memory/prj/host/output.txt
 ```
 
-### Part 3:
+### Part 3
 
+1. Open the Jupyter Notebook: fir_lowpass3
 
+```
+cd $HOME\pbl\aie_single_kernel\fir_lowpass\notebook> py -m jupyter lab
+```
 
-<p align="center">Copyright© 2023 Advanced Micro Devices</p>
-
+2. Copy the AIE output file back and compare the result by run the Python cells
 
 ---
 
