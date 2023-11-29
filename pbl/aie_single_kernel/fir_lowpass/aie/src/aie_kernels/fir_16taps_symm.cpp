@@ -35,7 +35,7 @@
 
 #include <adf.h>
 #include "system_settings.h"
-#include "aie_kernels.h"
+#include <aie_api/aie.hpp>
 
 alignas(32) int16_t taps[FIR_LEN] = {-29, -115, -122, 268, 1379, 3209, 5226, 6566, 6566, 5226, 3209, 1379,  268, -122, -115, -29};//2^15
 //alignas(32) int16_t taps[FIR_LEN] = {-57, -229, -242, 536, 2758, 6418, 10452, 13131, 13131, 10452, 6418, 2758, 536, -242, -229, -57};//2^16

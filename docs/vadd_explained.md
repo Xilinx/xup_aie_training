@@ -12,7 +12,7 @@ This document describes the vadd source files in detail. For further detail on h
 
 ```c++
 #include <adf.h>
-#include "aie_api/aie.hpp"
+#include <aie_api/aie.hpp>
 
 void aie_vadd_stream(input_stream_int32 *in0, input_stream_int32 *in1, output_stream_int32 *out){
     aie::vector<int32, 4> a = readincr_v4(in0);
@@ -33,7 +33,7 @@ More information can be found [here](https://www.xilinx.com/htmldocs/xilinx2022_
 ```c++
 #include "aie_api/aie.hpp"
 #include <aie_api/aie_adf.hpp>
-#include <aie_api/utils.hpp>
+#include <aie_api/aie.hpp>
 
 void aie_vadd_window(input_window<int32> *in0, input_window<int32> *in1, output_window<int32> *out){
     for (unsigned int i=0; i< 2048/8; i++) {

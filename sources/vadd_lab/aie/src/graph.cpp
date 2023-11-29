@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
     std::ifstream golden_file, aie_file;
     golden_file.open("../data/golden.txt");
     if(golden_file.fail()){
-      std::cerr << "Error opening golden file." << endl;
+      std::cerr << "Error opening golden file." << std::endl;
       golden_file.close();
       return -1;
     }
@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
     aie_file.open("aiesimulator_output/output.txt");
 #endif
     if(aie_file.fail()){
-      std::cerr<<"Error opening produced file."<<endl;
+      std::cerr<<"Error opening produced file."<< std::endl;
       return -1;
     }
 

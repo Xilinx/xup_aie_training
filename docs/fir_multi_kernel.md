@@ -76,7 +76,7 @@ This lab will use Makefile files to automate the building process.
 
 ### Step 3: Build the Whole Application for Hardware Run (optional)
 
-1. Build for hardware targets and generate the FPGA binary (.xclbin file) and host executable, which includes build the PL kernels and integrate the PL kernels and AIE kernels together in the VCK5000 platform. 
+1. Build for hardware targets and generate the FPGA binary (.xclbin file) and host executable, which includes build the PL kernels and integrate the PL kernels and AIE kernels together in the VCK5000 platform.
 
    ```sh
    cd $HOME/xup_aie_training/pbl/fir_stream_memory/prj
@@ -130,6 +130,10 @@ Each AI Engine is surrounded by 4x 32 kB data memories, each one being divided i
 - 1 write / cycle on 32 bytes (256 bits)
   - On another bank to achieve the highest bandwidth.
 
+  - Each bank has a single port, the accesses must be done on different banks to achieve 2x 256 bits/cycle.
+- 1 write / cycle on 32 bytes (256 bits)
+
+  - On another bank to achieve the highest bandwidth.
 - Be aware that you need also to feed the memories using DMAs or other AI Engines.
 
 <img src="./images/pbl/memory_interface.png" alt="Stream Image" width="500" height="390">
@@ -222,7 +226,6 @@ This means that with the AI Engine Array running at 1GHz, the kernel needs to be
 ### 2. Impact of the Run-time ratio on kernel mapping and resource utilization
 
 1. Increasing the run-time ratio to get 1 kernel per core might not increase the performances of the graph as it might be limited by the input or output throughput. Thus, having a run-time ratio higher than required might result in inefficient use of the resources.
-
 2. Reducing the run-time ratio might not always result in a reduction of the resource utilization as the compiler will map the kernels to the same core only when it makes sense. For example, here the 2 kernels are communicating together through a memory. Thus, they are already dependant on each other as the second kernel cannot start processing the data while the other has not completed its execution.
 
 ---------------------------------------
