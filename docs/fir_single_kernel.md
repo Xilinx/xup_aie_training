@@ -1,3 +1,8 @@
+---
+layout: default
+---
+
+
 # Low-order FIR Filter Project Based Learning -- Single Kernel Programming
 
 The Versal™ AI Engines (AIE) are well suited for vector math operations. One specific application that is worthy of consideration is low-order FIR filters.

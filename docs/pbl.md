@@ -1,3 +1,8 @@
+---
+layout: default
+---
+
+
 # Project-Based Learning on Adaptive SoC
 
 ## Goal

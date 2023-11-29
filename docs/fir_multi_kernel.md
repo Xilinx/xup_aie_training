@@ -1,3 +1,8 @@
+---
+layout: default
+---
+
+
 # AI Engine Communication Project Based Example -- Multiple Kernel Programming
 
 ## Background
