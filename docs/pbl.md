@@ -69,7 +69,7 @@ All the labs in this PBL tutorial is divided into three parts. The first part sh
 
 The following images visually illustrate the process of the PBL experiment, starting from Part one where applications are showcased in a Jupyter notebook, progressing to Part 2 where kernel code is compiled and simulated or tested on the board using the Vitis tool, and finally advancing to Part 3 where simulation or on-board test results are exported and imported back into the Jupyter notebook for performance simulation and verification
 
-![diagram](image/pbl/diagram.png)
+![diagram](images/pbl/diagram.png)
 
 ## Environment Setup
 
