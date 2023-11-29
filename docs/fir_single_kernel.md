@@ -60,8 +60,8 @@ The lab is divided into three parts. The first part shows the whole process of d
 
 <summary>Single Kernel Programming Design Flow In Part 2</summary>
 
-```mermaid
-
+```liquid
+{% mermaid %}
 graph TD
 
     A[Design Specification] --> B(Sample Rate)
@@ -79,7 +79,7 @@ graph TD
     I[Vector Data Type and Pointer Position] --> L[API calls for Computation]
     K(API calls for I/O) --> M(window_readincr_v<8> aie::load_v)
     L(API calls for Computation) --> N(Special Multiplications aie::sliding_mul_sym_xy_ops)
-
+{% endmermaid %}
 ```
 
 - Note: A basic understanding of FIR filters, C language, and the Xilinx® Vitis™ tools is assumed.
