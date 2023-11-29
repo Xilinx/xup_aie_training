@@ -14,8 +14,8 @@ The project-based learning focus is twofold:
 
 | Programming Model | Application                                               |
 | ----------------- | --------------------------------------------------------- |
-| Single Kernel     | [Low-Pass Filter](./aie_single_kernel/fir_lowpass/readme.md) |
-| Multiple Kernel   | [Mean Filter](./aie_multi_kernel/fir_interconnect/readme.md) |
+| Single Kernel     | [Low-Pass Filter](./fir_single_kernel.md) |
+| Multiple Kernel   | [Mean Filter](./fir_multi_kernel.md) |
 
 ## Introduction
 
@@ -69,7 +69,7 @@ All the labs in this PBL tutorial is divided into three parts. The first part sh
 
 The following images visually illustrate the process of the PBL experiment, starting from Part one where applications are showcased in a Jupyter notebook, progressing to Part 2 where kernel code is compiled and simulated or tested on the board using the Vitis tool, and finally advancing to Part 3 where simulation or on-board test results are exported and imported back into the Jupyter notebook for performance simulation and verification
 
-![diagram](image/diagram.png)
+![diagram](image/pbl/diagram.png)
 
 ## Environment Setup
 
@@ -95,7 +95,7 @@ The following images visually illustrate the process of the PBL experiment, star
 
 1. Install the Vitis tool and setup VCK5000 in Linux system
 
-   * If you want to set up a local environment for VCK5000，please refer to this [Guide](../docs/setup_local_computer.md).
+   * If you want to set up a local environment for VCK5000，please refer to this [Guide](./setup_local_computer.md).
 
 ---
 

@@ -1,5 +1,8 @@
 docs_list_title: pbl_sidebar
 docs:
+  - title: Project-Based Learning
+    url: pbl.html
+
   - title: Single Kernel
     url: fir_single_kernel.html
   
