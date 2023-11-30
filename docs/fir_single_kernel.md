@@ -1,5 +1,7 @@
 ---
 layout: default
+tags: [Mermaid]
+mermaid: true
 ---
 
 
@@ -60,10 +62,9 @@ The lab is divided into three parts. The first part shows the whole process of d
 
 <summary>Single Kernel Programming Design Flow In Part 2</summary>
 
-```mermaid
+<div class="mermaid">
 
 graph TD
-
     A[Design Specification] --> B(Sample Rate)
     A[Design Specification] --> C(Symmetry)
     A[Design Specification] --> D(Data Type)
@@ -80,7 +81,7 @@ graph TD
     K(API calls for I/O) --> M(window_readincr_v<8> aie::load_v)
     L(API calls for Computation) --> N(Special Multiplications aie::sliding_mul_sym_xy_ops)
 
-```
+</div>
 
 - Note: A basic understanding of FIR filters, C language, and the Xilinx® Vitis™ tools is assumed.
 
