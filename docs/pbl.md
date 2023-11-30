@@ -80,23 +80,23 @@ The following images visually illustrate the process of the PBL experiment, star
 
 1. Install Jupyter Lab on Windows system
 
-  ```sh
-  pip install jupyterlab
-  ```
+   ```sh
+   pip install jupyterlab
+   ```
 
 1. Set up the Python environment with the necessary packages
 
-  ```sh
-  cd $HOME/pbl/common
-  pip install -r requirements.txt
-  ```
+   ```sh
+   cd $HOME/pbl/common
+   pip install -r requirements.txt
+   ```
 
 1. Open the Jupyter Notebook
 
-  ```sh
-  cd $HOME/pbl/aie_single_kernel/fir_lowpass/notebook
-  py -m jupyter lab
-  ```
+   ```sh
+   cd $HOME/pbl/aie_single_kernel/fir_lowpass/notebook
+   py -m jupyter lab
+   ```
 
 1. Install the Vitis tool and setup VCK5000 in Linux system
 
