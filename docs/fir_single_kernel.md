@@ -1,5 +1,7 @@
 ---
 layout: default
+tags: [Mermaid]
+mermaid: true
 ---
 
 
@@ -60,8 +62,7 @@ The lab is divided into three parts. The first part shows the whole process of d
 
 <summary>Single Kernel Programming Design Flow In Part 2</summary>
 
-{% include mermaid.html %}
-```mermaid
+<div class="mermaid">
 graph TD
     A[Design Specification] --> B(Sample Rate)
     A[Design Specification] --> C(Symmetry)
@@ -72,13 +73,13 @@ graph TD
     D(Data Type) --> G[Max MACs per Cycle]
     E(Coefficient) --> G[Max MACs per Cycle]
     G[Max MACs per Cycle]  --> H[Lanes and Samples]
-    H[Lanes and Samples]  --> I[Vector Data Type and Pointer Position] 
+    H[Lanes and Samples]  --> I[Vector Data Type and Pointer Position]
     I[Vector Data Type and Pointer Position] --> K[API calls for I/O]
     F[Interface Type] --> K[API calls for I/O]
     I[Vector Data Type and Pointer Position] --> L[API calls for Computation]
     K(API calls for I/O) --> M(window_readincr_v<8> aie::load_v)
     L(API calls for Computation) --> N(Special Multiplications aie::sliding_mul_sym_xy_ops)
-```
+</div>
 
 - Note: A basic understanding of FIR filters, C language, and the Xilinx® Vitis™ tools is assumed.
 
