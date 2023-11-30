@@ -100,6 +100,9 @@
         ga('send', 'pageview');
     </script>
     {% endif %}
+    {% if page.mermaid %}
+        {% include mermaid.html %}
+    {% endif %}
     <script src="{{ '/assets/js/copy_code.js' | relative_url }}"></script>
 </body>
 
