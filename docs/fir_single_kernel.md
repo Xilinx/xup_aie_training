@@ -1,7 +1,5 @@
 ---
 layout: default
-tags: [Mermaid]
-mermaid: true
 ---
 
 
