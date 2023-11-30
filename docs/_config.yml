@@ -3,3 +3,5 @@ description: Hands-on experience with AI Engines using the Vitis Unified Softwar
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-dinky
+plugins:
+  - jekyll-mermaid
