@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <script src="https://kit.fontawesome.com/dc3ec3213a.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs"></script>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes">
     <!--[if lt IE 9]>
@@ -102,11 +101,6 @@
     </script>
     {% endif %}
     <script src="{{ '/assets/js/copy_code.js' | relative_url }}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            mermaid.initialize({ startOnLoad: true });
-        });
-    </script>
 </body>
 
 </html>
