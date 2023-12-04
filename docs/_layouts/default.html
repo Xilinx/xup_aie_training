@@ -48,6 +48,11 @@
             <li class="listedpages "><a style="color:white; " href="{{ item.url }} ">{{ item.title }}</a></li>
             {% endfor %}
 
+            <li><label for="btn-1 " class="show ">Project-Based </label></li>
+            {% for item in site.data.pbl_sidebar.docs %}
+            <li class="listedpages "><a style="color:white; " href="{{ item.url }} ">{{ item.title }}</a></li>
+            {% endfor %}
+
             <li><label for="btn-1 " class="show ">Code Explained </label></li>
             {% for item in site.data.code_sidebar.docs %}
             <li class="listedpages "><a style="color:white; " href="{{ item.url }} ">{{ item.title }}</a></li>
@@ -94,6 +99,9 @@
         ga('create', '{{ site.google_analytics }}', 'auto');
         ga('send', 'pageview');
     </script>
+    {% endif %}
+    {% if page.mermaid %}
+        {% include mermaid.html %}
     {% endif %}
     <script src="{{ '/assets/js/copy_code.js' | relative_url }}"></script>
 </body>
