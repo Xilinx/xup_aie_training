@@ -56,9 +56,9 @@ The following images visually illustrate the process of the PBL experiment, star
   cd $HOME\pbl\aie_single_kernel\fir_lowpass\notebook> py -m jupyter lab
   ```
 
-2. Install the Vitis tool and setup VCK5000 in Linux system
+2. Install the Vitis tool and setup VCK5000 platform in Linux system
 
-* If you want to set up a local environment for VCK5000，please refer to this [Guide](../docs/setup_local_computer.md).
+* If you want to set up a local environment for VCK5000 platform，please refer to this [Guide](../docs/setup_local_computer.md).
 
 ---
 

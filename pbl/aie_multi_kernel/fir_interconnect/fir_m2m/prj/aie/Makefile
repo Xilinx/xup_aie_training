@@ -14,7 +14,7 @@ XPFM = $(shell platforminfo -p $(PLATFORM) --json="file")
 XSA = $(strip $(patsubst %.xpfm, % , $(shell basename $(PLATFORM))))
 
 # OUTPUT PRODUCTS 
-BUILD_DIR = build.$(TARGET)
+BUILD_DIR := $(if $(filter x86sim,$(TARGET)),build.x86sim,build.hw)
 WORK_DIR = work
 SRC_DIR = $(shell readlink -f src/)
 DATA_DIR = $(shell readlink -f data/)
@@ -45,6 +45,9 @@ help::
 	$(ECHO) ""
 	$(ECHO) "  make aieemu"
 	$(ECHO) "      Run AIE simulator and generate outputs suitable for Vitis Analyzer"
+	$(ECHO) ""
+	$(ECHO) "  make x86sim"
+	$(ECHO) "      Run x86 simulator"
 	$(ECHO) ""
 	$(ECHO) "  make analyzer"
 	$(ECHO) "      Call the Vitis analyer to show the aie build summary and review waveform database output"

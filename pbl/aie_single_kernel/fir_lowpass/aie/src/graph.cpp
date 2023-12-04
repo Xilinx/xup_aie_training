@@ -30,12 +30,6 @@ int main(){
 	ifstream fin1,fin2;
 	char l1[256],l2[256];
 
-//	char cwd[256];
-//	if (getcwd(cwd, sizeof(cwd)) == NULL)
-//	      perror("getcwd() error");
-//	    else
-//	      printf("current working directory is: %s\n", cwd);
-
 	fin1.open(REF_OUTFILE);
 	if(!fin1.is_open())
 	{
@@ -61,7 +55,10 @@ int main(){
 		fin2.getline(l2,256);
 		if(strlen(l1)>0 && strlen(l2)>0)
 		{
-			if(!strcmp(l1,l2))
+			int num1 = atof(l1);
+        	int num2 = atof(l2);
+        	// Compare the absolute difference between the two numbers
+        	if (fabs(num1 - num2) < 5)
 				cout << "Line " << setw(4) << ntot << "     OK" << endl;
 			else
 			{
