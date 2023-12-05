@@ -79,7 +79,6 @@ This lab provides the entire process of designing a low-pass filter using Python
 
 The following design flowchart illustrates the logical relationships between key parameters in the eight design steps outlined in Part 2. For more details please refer to [Part 2](./notebook/fir_lowpass2.ipynb).
 
-```mermaid
 <table border="2">
 <thead>
   <tr>
