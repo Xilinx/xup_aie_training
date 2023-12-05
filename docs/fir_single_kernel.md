@@ -159,7 +159,7 @@ Run the Software implementation in Jupyter lab on Windows or Linux system
    ```sh
    cd $HOME/pbl/aie_single_kernel/fir_lowpass/notebook
    py -m jupyter lab
-```
+    ```
 
 2. Run the notebook：fir_lowpass1 in Jupyter Lab
 3. Review the input and output reference data file in the following path
