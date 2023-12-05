@@ -13,7 +13,7 @@ XSA = $(strip $(patsubst %.xpfm, % , $(shell basename $(PLATFORM))))
 MAX_CYCLES := 10000
 
 # OUTPUT PRODUCTS 
-BUILD_DIR = build.$(TARGET)
+BUILD_DIR := $(if $(filter x86sim,$(TARGET)),build.x86sim,build.hw)
 WORK_DIR = work
 SRC_DIR = $(shell readlink -f src/)
 DATA_DIR = $(shell readlink -f data/)
@@ -39,11 +39,14 @@ help::
 	$(ECHO) "  make aieemu"
 	$(ECHO) "      Run AIE simulator and generate outputs suitable for Vitis Analyzer"
 	$(ECHO) ""
+	$(ECHO) "  make x86sim"
+	$(ECHO) "      Run x86 simulator"
+	$(ECHO) ""
 	$(ECHO) "  make analyzer"
-	$(ECHO) "      Call the Vitis analyer to show the aie build summary and review waveform database output"
+	$(ECHO) "      Call the Vitis analyzer to show the AIE build summary and review waveform database output"
 	$(ECHO) ""
 	$(ECHO) "  make get_output"
-	$(ECHO) "      Strip simulator output data from timestamps and copy to new file"
+	$(ECHO) "      Strip simulator output data from timestamps and copy to a new file"
 	$(ECHO) ""
 	$(ECHO) "  make clean"
 	$(ECHO) "      Command to remove all the generated files."
@@ -76,7 +79,7 @@ get_output:
 
 x86sim:
 	cd $(BUILD_DIR); \
-	x86simulator --pkg-dir=$(WORK_DIR)
-	
+	x86simulator --pkg-dir=$(WORK_DIR) --i=..	
+
 clean:
 	rm -rf $(BUILD_DIR)
