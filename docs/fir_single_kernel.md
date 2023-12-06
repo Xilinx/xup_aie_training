@@ -160,7 +160,6 @@ Run the Software implementation in Jupyter lab on Windows or Linux system
    cd $HOME/xup_aie_training/pbl/aie_single_kernel/fir_lowpass/notebook
    py -m jupyter lab
    ```
-
 2. Run the notebook：fir_lowpass1 in Jupyter Lab
 3. Review the input and output reference data file in the following path
 
@@ -177,7 +176,7 @@ The project will use Makefile files to automate the building process in Vitis.
    Navigate to the AIE folder and run make all to build the HLS kernel project
 
    ```sh
-   cd $HOME/xup_aie_training/pbl/fir_lowpass/aie
+   cd $HOME/xup_aie_training/pbl/aie_single_kernel/fir_lowpass/aie
    make all
    ```
 2. Run the AIE Emulation
@@ -196,7 +195,7 @@ The project will use Makefile files to automate the building process in Vitis.
    make get_output
    ```
 
-   The output files can be found here: `$HOME/xup_aie_training/pbl/fir_lowpass/aie/data/output_aie.txt`
+   The output files can be found here: `$HOME/xup_aie_training/pbl/aie_single_kernel/fir_lowpass/aie/data/output_aie.txt`
 
 ### Part 3: Graph Programming and Performance Analyze
 
