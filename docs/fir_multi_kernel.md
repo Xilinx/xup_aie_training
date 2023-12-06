@@ -1,8 +1,6 @@
 ---
 layout: default
 ---
-
-
 # AI Engine Communication Project Based Example -- Multiple Kernel Programming
 
 ## Background
@@ -30,11 +28,11 @@ This lab guides you through the steps involved in creating single FIR kernel usi
 
 ## Catalog
 
-| lab | Interface   |  Connection   | Placement| DataType | Samples |
-|--------|---------|----------|--------------|--------|--------|
-|  [fir_stream_memory](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_multi_kernel/fir_interconnect/fir_stream_memory/notebook/fir_s_m.ipynb) | Stream or Memory Interface | /  |/| int16 | 1024 |
-|  [fir_m2m](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_multi_kernel/fir_interconnect/fir_m2m/notebook/fir_m2m.ipynb) | Memory | Shared Memory Using Memory Interface  | neighbor |int16 | 1024 |
-|  [fir_cascade](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_multi_kernel/fir_interconnect/fir_cascade/notebook/fir_cascade.ipynb) | Stream | AXI4-Stream Interconnect Using Cascade Stream Interface |neighbor | int16 | 1024 |
+| lab                                                                                                                                                   | Interface                  | Connection                                              | Placement | DataType | Samples |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------------------------------------------------- | --------- | -------- | ------- |
+| [fir_stream_memory](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_multi_kernel/fir_interconnect/fir_stream_memory/notebook/fir_s_m.ipynb) | Stream or Memory Interface | /                                                       | /         | int16    | 1024    |
+| [fir_m2m](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_multi_kernel/fir_interconnect/fir_m2m/notebook/fir_m2m.ipynb)                     | Memory                     | Shared Memory Using Memory Interface                    | neighbor  | int16    | 1024    |
+| [fir_cascade](https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_multi_kernel/fir_interconnect/fir_cascade/notebook/fir_cascade.ipynb)         | Stream                     | AXI4-Stream Interconnect Using Cascade Stream Interface | neighbor  | int16    | 1024    |
 
 ## Steps
 
@@ -48,19 +46,16 @@ This lab will use Makefile files to automate the building process.
    cd $HOME/xup_aie_training/pbl/fir_stream_memory/prj/aie
    make all
    ```
-
 2. Run the AIE Emulation
 
    ```sh
    make aieemu
    ```
-
 3. Analyze the AIE Emulation and compilation results
 
    ```sh
    make analyzer
    ```
-
 4. Get the AIE Emulation result
 
    ```sh
@@ -89,14 +84,12 @@ This lab will use Makefile files to automate the building process.
    ```
 
    - Note:This step can take a couple of hours, or more significant time depending on the design complexity, the machine you are building on, and its current workload.
-
 2. Run the application on a system with the AMD VCK5000 card using the following command
 
    ```sh
    cd $HOME/xup_aie_training/pbl/fir_stream_memory/prj/host
    ./fir_s_m.exe ../build.hw/fir_s_m.xclbin
    ```
-
 3. Check the hardware output file
 
    ```terminal
@@ -131,10 +124,11 @@ Accessing the data to/from the streams using the 128-bit interface does not incr
 Each AI Engine is surrounded by 4x 32 kB data memories, each one being divided in four pairs of banks. The bandwidth is high:
 
 - 2 reads / cycle on 32 bytes (256 bits) each
+
   - Each bank has a single port, the accesses must be done on different banks to achieve 2x 256 bits/cycle.
 - 1 write / cycle on 32 bytes (256 bits)
-  - On another bank to achieve the highest bandwidth.
 
+  - On another bank to achieve the highest bandwidth.
   - Each bank has a single port, the accesses must be done on different banks to achieve 2x 256 bits/cycle.
 - 1 write / cycle on 32 bytes (256 bits)
 
@@ -233,5 +227,6 @@ This means that with the AI Engine Array running at 1GHz, the kernel needs to be
 1. Increasing the run-time ratio to get 1 kernel per core might not increase the performances of the graph as it might be limited by the input or output throughput. Thus, having a run-time ratio higher than required might result in inefficient use of the resources.
 2. Reducing the run-time ratio might not always result in a reduction of the resource utilization as the compiler will map the kernels to the same core only when it makes sense. For example, here the 2 kernels are communicating together through a memory. Thus, they are already dependant on each other as the second kernel cannot start processing the data while the other has not completed its execution.
 
----------------------------------------
-<p align="center">Copyright&copy; 2023 Advanced Micro Devices</p>
+---
+
+<p align="center">Copyright© 2023 Advanced Micro Devices</p>

@@ -1,8 +1,6 @@
 ---
 layout: default
 ---
-
-
 # Project-Based Learning on Adaptive SoC
 
 ## Goal
@@ -12,15 +10,14 @@ layout: default
 The project-based learning focus is twofold:
 
 * Firstly, design a real application. We will generate stimuli data and feed into the AIE for computation. This allows us for the intuitive validation and comparison of AIE computation results within a practical context.
-
 * Secondly, learn the AIE programming model by doing. The labs aim at providing thorough and detailed explanation of AIE kernel programming model. Empowering developers with practical kernel development skills and a deep understanding of the AIE's vector processor architecture, maximizing the parallel computing performance of the graph level dataflow architecture.
 
 ## Objective
 
-| Programming Model | Application                                               |
-| ----------------- | --------------------------------------------------------- |
+| Programming Model | Application                            |
+| ----------------- | -------------------------------------- |
 | Single Kernel     | [Low-Pass Filter](./fir_single_kernel.md) |
-| Multiple Kernel   | [Mean Filter](./fir_multi_kernel.md) |
+| Multiple Kernel   | [Mean Filter](./fir_multi_kernel.md)      |
 
 ## Introduction
 
@@ -83,22 +80,19 @@ The following images visually illustrate the process of the PBL experiment, star
    ```sh
    pip install jupyterlab
    ```
-
-1. Set up the Python environment with the necessary packages
+2. Set up the Python environment with the necessary packages
 
    ```sh
-   cd $HOME/pbl/common
+   cd $HOME/xup_aie_training/pbl/common
    pip install -r requirements.txt
    ```
-
-1. Open the Jupyter Notebook
+3. Open the Jupyter Notebook
 
    ```sh
-   cd $HOME/pbl/aie_single_kernel/fir_lowpass/notebook
+   cd $HOME/xup_aie_training/pbl/aie_single_kernel/fir_lowpass/notebook
    py -m jupyter lab
    ```
-
-1. Install the Vitis tool and setup VCK5000 in Linux system
+4. Install the Vitis tool and setup VCK5000 in Linux system
 
    * If you want to set up a local environment for VCK5000，please refer to this [Guide](./setup_local_computer.md).
 
