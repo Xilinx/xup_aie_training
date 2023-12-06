@@ -62,10 +62,10 @@ void fir_16taps_symm // _single_buf_array_indexing
 		constexpr unsigned Lanes=4, Points=16, CoeffStep=1, DataStepXY=1;
 		using mulop = aie::sliding_mul_sym_xy_ops<Lanes, Points, CoeffStep, DataStepXY,int16,cint16>;
 
-		auto acc = mulop::mul_sym(coeff,0,sbuff,0); // o0..3  =f(c0..7, d0..10,  d8..18)
+		auto acc = mulop::mul_sym(coeff,0,sbuff,1); // o0..3  =f(c0..7, d0..10,  d8..18)
 	    window_writeincr(cb_output, acc.to_vector<cint16>(shift));
 
-		acc = mulop::mul_sym(coeff,0,sbuff,4); // o4..7  =f(c0..7, d4..14,  d12..22)
+		acc = mulop::mul_sym(coeff,0,sbuff,5); // o4..7  =f(c0..7, d4..14,  d12..22)
 	    window_writeincr(cb_output, acc.to_vector<cint16>(shift));
 
 		window_decr_v<8>(cb_input,1);
