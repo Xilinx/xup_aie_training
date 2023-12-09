@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 # Project-Based Learning on Versal Adaptive SoC
 
 ## Goal
