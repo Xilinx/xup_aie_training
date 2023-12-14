@@ -79,54 +79,6 @@ This lab provides the entire process of designing a low-pass filter using Python
 
 The following design flowchart illustrates the logical relationships between key parameters in the eight design steps outlined in Part 2. For more details please refer to [Part 2](./notebook/fir_lowpass2.ipynb).
 
-<table border="2">
-<thead>
-  <tr>
-    <th>Part</th>
-    <th>Topic</th>
-    <th>Description</th>
-    <th>Environment</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td rowspan="3">1</td>
-    <td rowspan="3"><a href="https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_single_kernel/fir_lowpass/notebook/fir_lowpass1.ipynb">Software implementation</a></td>
-    <td>Demonstrate the software implementation of the application</td>
-    <td rowspan="3">Jupyter Notebook</td>
-  </tr>
-  <tr>
-    <td>Using Python and its powerful extensible library</td>
-  </tr>
-  <tr>
-    <td>Generate the input and golden data files for the AIE</td>
-  </tr>
-  <tr>
-    <td rowspan="2">2</td>
-    <td rowspan="2"><a href="https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_single_kernel/fir_lowpass/notebook/fir_lowpass2.ipynb">Single Kernel Programming</a></td>
-    <td>Design the FIR single kernel in AIE</td>
-    <td rowspan="2">AMD Vitis 2022.2</td>
-  </tr>
-  <tr>
-    <td>Analyze and optimize the read and write efficiency of ports</td>
-  </tr>
-  <tr>
-    <td rowspan="3">3</td>
-    <td rowspan="3"><a href="https://github.com/Xilinx/xup_aie_training/blob/main/pbl/aie_single_kernel/fir_lowpass/notebook/fir_lowpass3.ipynb">Graph Programming and Performance Analysis</a></td>
-    <td>Create the kernel Graph and the test bench</td>
-    <td rowspan="3">Jupyter Notebook</td>
-  </tr>
-  <tr>
-    <td>Compare with AIE HW Emulation result with the SW result</td>
-  </tr>
-  <tr>
-    <td>Analyze performance and accuracy</td>
-  </tr>
-</tbody>
-</table>
-
-<summary>Single Kernel Programming Design Flow In Part 2</summary>
-
 <div class="mermaid">
 graph TD
     A[Design Specification] --> B(Sample Rate)
