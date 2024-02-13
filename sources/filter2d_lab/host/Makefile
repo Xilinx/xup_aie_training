@@ -17,10 +17,9 @@ INCLUDES +=	-I$(VIDEOLIB_ROOT)/L1/include/aie/
 INCLUDES +=	-I$(CONFIG_FILE)
 #INCLUDES +=	-I$(XILINX_HLS)/include/
 
-LIBS := -lxaiengine -ladf_api_xrt -lxrt_core -lxrt_coreutil -lgcc -lc
+LIBS := -lxrt_core -lxrt_coreutil -lgcc -lc
 LIBS += -lxilinxopencl -lpthread -lrt -ldl -lcrypt -lstdc++ -lOpenCL
 LIBS += -Wno-unused-label -Wno-narrowing -DVERBOSE
-LIBS += -L$(XILINX_VITIS)/aietools/lib/lnx64.o
 LIBS += -L$(XILINX_XRT)/lib/
 LIBS += -L$(STATIC_LIB)/
 LIBS += -lsmartTilerStitcher

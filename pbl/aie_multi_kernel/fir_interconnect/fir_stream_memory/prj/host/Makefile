@@ -11,10 +11,9 @@ INCLUDES +=	-I$(XILINX_VITIS)/aietools/include
 INCLUDES +=	-I$(XILINX_VITIS)/include
 INCLUDES +=	-I$(XILINX_XRT)/include
 
-LIBS := -lxaiengine -ladf_api_xrt -lxrt_core -lxrt_coreutil -lgcc -lc
+LIBS := -lxrt_core -lxrt_coreutil -lgcc -lc
 LIBS += -lxilinxopencl -lpthread -lrt -ldl -lcrypt -lstdc++ -lOpenCL
 LIBS += -Wno-unused-label -Wno-narrowing -DVERBOSE
-LIBS += -L$(XILINX_VITIS)/aietools/lib/lnx64.o
 LIBS += -L$(XILINX_XRT)/lib/
 
 # =========================================================
@@ -29,7 +28,7 @@ all: host
 .PHONY: host
 host: $(BUILD_DIR) $(EXECUTABLE)
 
-$(BUILD_DIR): 
+$(BUILD_DIR):
 	mkdir -p $(BUILD_DIR);
 
 $(EXECUTABLE): $(BUILD_DIR)/host.o
