@@ -132,6 +132,36 @@ This is still a software emulation (AIE Simulation), however the simulation take
    vitis_analyzer build.hw/work/graph.aiecompile_summary
    ```
 
+## Build Design for Hardware and Run
+
+1. Navigate to the `vadd_lab` root folder.
+
+   ```sh
+   cd $HOME/xup_aie_training/sources/vadd_lab/
+   ```
+
+1. Build design for hardware
+
+   ```sh
+   cd $HOME/xup_aie_training/sources/vadd_lab/
+   ```
+
+   This may take around 80 minutes and it will generate the `vadd.xclbin` and `vadd.exe` files
+
+1. Run in hardware
+
+   ```sh
+   cd $HOME/xup_aie_training/sources/vadd_lab/vadd
+   ./vadd.exe ../build.hw/vadd.xclbin
+   ```
+
+1. Alternatively, you can run in hardware using the Python script
+
+   ```sh
+   cd $HOME/xup_aie_training/sources/vadd_lab/vadd
+   python3 vadd.py --xclbin ../build.hw/vadd.xclbin
+   ```
+
 ## Assignments for the Reader
 
 The following assignments are optional, however they will help deepen your knowledge about the AIE programming model. No solution is provided for these assignments.
