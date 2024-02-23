@@ -106,7 +106,7 @@ int main(int argc, char** argv) {
         std::cerr << "Failed to open output file." << std::endl;
         // Handle the error
     } else {
-        for (int i = 0; i < num_elements; ++i) {
+        for (unsigned int i = 0; i < num_elements; ++i) {
             outputFile << DataOutput[i] << "\n";
         }
         outputFile.close();

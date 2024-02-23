@@ -157,13 +157,7 @@ Steps on adding the host application, page 30 onwards
 
    Add the following libraries, under Libraries (-l)
 
-   `adf_api_xrt`
-
    `xrt_coreutil`
-
-   Add the following path, under search path (-L)
-
-   `${env_var:XILINX_VITIS}/aietools/lib/lnx64.o`
 
    ![](images/vadd_lab/host_domain_cpp_settings_linker_libs.png)
 
