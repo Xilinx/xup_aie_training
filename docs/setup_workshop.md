@@ -22,7 +22,7 @@ After completing this lab, you will be able to:
 
 * Stop the instance
 
-* Run the [Setup VCK5000 platform](#setup-vck5000-platform) to configure the development platform in the system
+* Run the [Setup VCK5000 platform](setup_tools.md#setup-vck5000-platform) to configure the development platform in the system
 
 ## Steps
 
@@ -34,7 +34,7 @@ Each registered participant to AMD tutorial has been allocated a preconfigured E
 
 * Link to access a pre-configured EC2 instance
 
-If this is not the case, please contact one of your instructors
+If this is not the case, please contact one of your instructors.
 
 ### Login into the AWS and starting an F1 instance
 
