@@ -143,7 +143,7 @@ This is still a software emulation (AIE Simulation), however the simulation take
 1. Build design for hardware
 
    ```sh
-   cd $HOME/xup_aie_training/sources/vadd_lab/
+   make
    ```
 
    This may take around 80 minutes and it will generate the `vadd.xclbin` and `vadd.exe` files
