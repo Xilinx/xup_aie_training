@@ -16,7 +16,7 @@ This version of the tutorial has been verified for the following environments
 
 ## Contact Details
 
-You can contact us by email [xup@amd.com](mailto:xup@amd.com)
+You can contact us by email [aup@amd.com](mailto:aup@amd.com)
 
 ---------------------------------------
 <p align="center">Copyright&copy; 2023 Advanced Micro Devices</p>
