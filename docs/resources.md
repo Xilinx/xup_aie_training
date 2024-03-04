@@ -6,7 +6,7 @@ layout: default
 
 ## Learning Path
 
-1. [Versal ACAP Design Process Documentation](https://www.xilinx.com/support/documentation-navigation/design-process/ai-engine-development.html)
+1. [Versal Adaptive SoC Design Process Hubs](https://docs.xilinx.com/p/ai-engine-development)
    - Using this interactive page, you can select the area you are interested in, then using the flow chart you can find related documentation
 
 1. AIE and AIE-ML Architecture, [AM009](https://docs.xilinx.com/r/en-US/am009-versal-ai-engine) and [AM020](https://docs.xilinx.com/r/en-US/am020-versal-aie-ml)
